@@ -1,10 +1,10 @@
 # Voss Current State
 
-Canonical checkpoint: `state/checkpoints/2026-08-08T0907-0400.md`
-Checkpoint commit: `2d3dde060dfd061ebecbc20ac2229989637d2604`
+Canonical checkpoint: `state/checkpoints/2026-08-08T0931-0400.md`
+Checkpoint commit: `84029c7985269a6a76831301996c6a8e77bc7889`
 Record class: WORKING_PROJECT
 Orientation: COMPLETE_FROM_FRESH_SNAPSHOT
-Consumed Vera coordination through: `3450`
+Consumed Vera coordination through: `3493`
 
 ## Recovery order
 1. Read this file.
@@ -15,23 +15,23 @@ Consumed Vera coordination through: `3450`
 
 ## Current headline state
 - R9A0 PR #1 remains OPEN / NON_MERGEABLE at native `6a568d35c142dc37ea41a0209cdb1f295949f767` vs main `b00f3482786dc80003261fdfacb73cc31ae9dd35`.
-- PR #2 remains OPEN / MERGEABLE at database `58a6ae4d4272165bd5b988bdd7a8bb0e72417302` against that native base; acceptance is current-base-only.
-- Sequence 3400 controls assignment admission: ordinary READY_FOR_REVIEW handoffs are non-state proposal evidence; Voss owns closure unless explicitly delegated.
-- Bob B9/B8 closed at 3446/3447. Current Bob replacements are B10 3448 and B11 3449.
-- Preferred admission direction remains one canonical coordination state graph plus a protected admission-proof registry. Trusted actor identity, source completeness, workload policy, resolver correctness and effect confinement remain distinct.
-- Current authority assurance ceiling is PROCEDURAL; ACTOR_AUTHENTICATED is not established. Current protected-effect confinement is FALSE for GitHub and Supabase.
-- Actual ChatGPT app permission inspection shows app-specific `Allow all actions` for GitHub and Supabase, with global default `Allow low-risk actions`; no permission was changed. Vera research receipt 3450 records the bounded finding.
-- Current raw Supabase SQL executes as postgres with no auth.uid/auth.role. Future E2 ordinary-runtime protection must be distinguished from the administrative postgres/owner bypass boundary.
-- Resolver receipt identity requires versioned cross-runtime canonicalization. Raw evidence, factual lineage and policy decision digests remain separate.
-- Behavioral qualification custody, content/evaluator validity, deterministic CI, annotation-layer qualification, effect-confinement evidence, installation and post-install remain separate proof classes.
-- Combined native implementation-design ceiling is 18 MODIFY + 54 CREATE, not executed state. Preferred Settings target is <=7900 characters; no implementation writer lease exists.
+- PR #2 remains OPEN / MERGEABLE at database `58a6ae4d4272165bd5b988bdd7a8bb0e72417302` only against that exact native base; acceptance is base-bound.
+- Sequence 3400 controls authority admission; sequence 3481 now prospectively requires non-state READY_FOR_REVIEW proposals to use `supersedes_event_id=NULL` and top-level `acknowledges_event_id = root ASSIGN event_id`. Payload root locators are non-authoritative duplication.
+- Preferred admission direction remains one canonical coordination state graph plus protected admission-proof registry. Actor/governance authority, currentness, effect claims, target preconditions and provider confinement remain independent boundaries.
+- Current authority assurance remains PROCEDURAL. Current GitHub/Supabase protected-effect confinement remains FALSE; app-specific action policy is `Allow all actions` for both and the ordinary Voss engineering runtime has demonstrated raw effects.
+- Supabase MCP admin route reaches Vera and BT2 as postgres/postgres with null auth.uid/auth.role; DB-local guards cannot establish project-level admin confinement.
+- H13/H14 closed 3474/3475; H15/H16 closed 3489/3490. Protected-effect release remains blocked.
+- Bob B10/B11 closed 3483/3485. Exact B11 proposed Settings are 7894 chars / 7902 UTF-8 bytes / SHA-256 `a36fd6e91c44afa5db9a12f959dbcab97ebe335fa8e4edb7d5d42e3f86e556ca`, leaving six characters of margin under <=7900; any change requires refreeze.
+- Native implementation-design ceiling remains 18 MODIFY + 54 CREATE, not executed state and not a writer lease.
+- Sequence 3493 adds `TARGET_POSTGRES_VERSION_PARITY_NOT_PROVEN`: current R9A0 DB CI uses postgres:15 while live Vera Supabase is PostgreSQL 17.6.1. Existing PR2 evidence is valid for its declared PG15 disposable target/current base, not proof of hosted PG17 parity.
+- MU3/MU4/MU5 closed at 3461/3462/3463. Correction custody remains service-path append-only/no-fork-observed rather than fork-prevented; AP remains strictly downstream/separate.
 
 ## Current executable lanes
-- Bob: B10 `3448`, B11 `3449`.
-- Hephaestus: H11 `3439`, H12 `3440`.
-- Masa: MA11 `3433`, MA12 `3434`.
+- Bob: B12 `3484`, B13 `3486`.
+- Hephaestus: H17 `3491`, H18 `3492`.
+- Masa: MA11 `3433`, MA12 `3434`; substantive 3468/3469 handoffs are pending structurally corrected root-ACK proposals before Voss terminal closure.
 - Vera: V5 `3417`, V6 `3418`.
-- Mune: MU3 exact-head Edge V3 review; MU4 correction-store durability; MU5 AP/safety-continuity separation. Do not add replacement Mune lanes until currentness is re-resolved after those outputs.
+- Mune: MU6 `3464`, MU7 `3465`.
 
 ## Persistence policy
 Use this repository as the preferred canonical Voss save surface. Save immutable snapshots under `state/checkpoints/` and advance `state/CURRENT.md` after material state transitions, explicit update/save requests, and no later than the established live-turn cadence. Keep public-repo content privacy-minimized and WORKING_PROJECT only.
