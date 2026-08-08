@@ -1,10 +1,10 @@
 # Voss Current State
 
-Canonical checkpoint: `state/checkpoints/2026-08-08T0839-0400.md`
-Checkpoint commit: `c0c8685660b7cedb598980750c604749ece5ba80`
+Canonical checkpoint: `state/checkpoints/2026-08-08T0907-0400.md`
+Checkpoint commit: `2d3dde060dfd061ebecbc20ac2229989637d2604`
 Record class: WORKING_PROJECT
 Orientation: COMPLETE_FROM_FRESH_SNAPSHOT
-Consumed Vera coordination through: `3440`
+Consumed Vera coordination through: `3450`
 
 ## Recovery order
 1. Read this file.
@@ -17,15 +17,17 @@ Consumed Vera coordination through: `3440`
 - R9A0 PR #1 remains OPEN / NON_MERGEABLE at native `6a568d35c142dc37ea41a0209cdb1f295949f767` vs main `b00f3482786dc80003261fdfacb73cc31ae9dd35`.
 - PR #2 remains OPEN / MERGEABLE at database `58a6ae4d4272165bd5b988bdd7a8bb0e72417302` against that native base; acceptance is current-base-only.
 - Sequence 3400 controls assignment admission: ordinary READY_FOR_REVIEW handoffs are non-state proposal evidence; Voss owns closure unless explicitly delegated.
-- H7/H8 closed at 3426/3427 with H8 closure amendment 3430. MA9/MA10 closed at 3431/3432. H9/H10 closed at 3437/3438.
-- Preferred admission direction remains one canonical coordination state graph plus a protected admission-proof registry. Trusted actor identity remains separate from state-slot protection.
-- Current authority assurance ceiling on exposed evidence is PROCEDURAL. CAPABILITY_BOUND is future-feasible; ACTOR_AUTHENTICATED is not established.
-- Current project-level protected-effect confinement is FALSE for GitHub and Supabase because an ordinary Voss engineering runtime can reach raw mutation routes. A guarded publisher is not mechanically sufficient until alternate equal/broader mutators are removed, isolated, or credential-partitioned.
+- Bob B9/B8 closed at 3446/3447. Current Bob replacements are B10 3448 and B11 3449.
+- Preferred admission direction remains one canonical coordination state graph plus a protected admission-proof registry. Trusted actor identity, source completeness, workload policy, resolver correctness and effect confinement remain distinct.
+- Current authority assurance ceiling is PROCEDURAL; ACTOR_AUTHENTICATED is not established. Current protected-effect confinement is FALSE for GitHub and Supabase.
+- Actual ChatGPT app permission inspection shows app-specific `Allow all actions` for GitHub and Supabase, with global default `Allow low-risk actions`; no permission was changed. Vera research receipt 3450 records the bounded finding.
+- Current raw Supabase SQL executes as postgres with no auth.uid/auth.role. Future E2 ordinary-runtime protection must be distinguished from the administrative postgres/owner bypass boundary.
 - Resolver receipt identity requires versioned cross-runtime canonicalization. Raw evidence, factual lineage and policy decision digests remain separate.
-- Behavioral qualification custody, content/evaluator validity, deterministic CI, annotation-layer qualification and installation evidence remain separate proof classes.
+- Behavioral qualification custody, content/evaluator validity, deterministic CI, annotation-layer qualification, effect-confinement evidence, installation and post-install remain separate proof classes.
+- Combined native implementation-design ceiling is 18 MODIFY + 54 CREATE, not executed state. Preferred Settings target is <=7900 characters; no implementation writer lease exists.
 
 ## Current executable lanes
-- Bob: B8 `3411`, B9 `3412`.
+- Bob: B10 `3448`, B11 `3449`.
 - Hephaestus: H11 `3439`, H12 `3440`.
 - Masa: MA11 `3433`, MA12 `3434`.
 - Vera: V5 `3417`, V6 `3418`.
