@@ -1,46 +1,47 @@
 # Voss Current State
 
-Canonical checkpoint: `state/checkpoints/2026-08-08T1832-0400.md`
-Checkpoint commit: `41f5db07809da5c6ac5e51c21a8d426d50c10d8d`
+Canonical checkpoint: `state/checkpoints/2026-08-09T0033-0400.md`
+Checkpoint commit: `cbc36c63652a4911617cca0ccff0dd2082bf125b`
 Record class: WORKING_PROJECT
 Orientation: COMPLETE_FROM_FRESH_SNAPSHOT
-Consumed Vera coordination through: `3612`
+Consumed Vera coordination through: `3645`
 
 ## Recovery order
 1. Read this file and the canonical checkpoint above.
-2. Resolve every assignment against Supabase events newer than 3612 before starting, resuming, reporting, counting, closing, or using authority.
+2. Resolve every assignment against Supabase events newer than 3645 before starting, resuming, reporting, counting, closing, or using authority.
 3. Refresh task-relevant GitHub/Drive/Slack evidence and preserve writer leases.
 
 ## Critical path
 - R8A3 remains active for ordinary operation. R9A0 is under construction and not installed.
-- Bob B15 remains CURRENT and sole repository writer on `feature/r9a0-combined-native-implementation-v1`; repository writes remain PAUSED.
-- Fresh compare during the checkpoint pass: branch is still identical to `ddcd98b4e61df09f06886f2073ecbdfad21c8f12` with zero successor commits.
-- B11 Settings remain frozen at `a36fd6e91c44afa5db9a12f959dbcab97ebe335fa8e4edb7d5d42e3f86e556ca`.
-- Exact B13 V4 currentness source remains `cbfc6fa5b6b76542d374a17e09f6b857edf24eac25a7d28442c387829781c428`; current B12 contract remains `7cc34d03438a84e924be9ce01518c947ddf925b43ffe91e1a1e607df1a93fdd9`.
+- Bob B15 remains CURRENT and sole repository writer; repository writes remain PAUSED.
+- Fresh branch compare remains exact `ddcd98b4e61df09f06886f2073ecbdfad21c8f12`, zero successor commits.
+- MU8 is Voss-closed APPROVED at 3616.
+- MA15 is canonically closed APPROVED at 3634 after explicit final PASS; 3633 duplicate closure-looking evidence is non-state under 3636.
+- H30 is the sole remaining B13/currentness semantic peer gate. Exact review target is 3632 clarified by 3638.
 - `BUILT_AND_VALIDATED` remains NO.
 
-## B13/B12 disposition
-V4 is mechanically reproducible but semantically rejected. Canonical 3606 replaced one-off patching with a normalization-first repair boundary. Canonical 3609-3611 add orthogonal factual-axis restoration, target/effect separation, and trusted state-vs-nonstate event-class normalization.
+## Currentness target
+Normalization-first: trusted observation identity/scope binding -> same-ID identity reconciliation -> trusted foreign-scope filtering -> closed state envelope + semantic digest -> per-event admission resolution -> root reduction -> purpose-specific projections.
+Admission enum is exactly `ADMITTED | REJECTED | CONFLICTED | UNRESOLVED`; only ADMITTED enters root reduction. Semantic dedupe never inherits admission. Missing proof != REJECTED. Source completeness and standing action authority remain orthogonal.
+No semantic `commit_order`; nonblank canonical IDs; closed relations and mutation masks; AMEND/SUPERSEDE/REACTIVATE preserve owner; REROUTE changes owner; one keyed dependency latch; stable root lane vs exact subject version; no universal effect Boolean. Physical provider edge is source/admission integrity, not semantic event identity. Stable lane terminal is only NONE/COMPLETED/CANCELLED/TERMINALLY_BLOCKED; SUPERSEDED/REROUTED_AWAY are subject/version dispositions.
 
-Before successor bytes, require:
-- canonical event identity normalization with exact-equivalent dedupe only under explicit normalization and divergent same-ID conflict;
-- exact root ASSIGN, required nonempty owner, no predecessor absent governed bridge, required authority/closed enums;
-- trusted state-vs-nonstate discriminator plus closed assignment-relation enum;
-- root-connected normalized state graph only; no event-self-asserted reconciliation;
-- relation-specific mutation masks; AMEND preserves owner, REROUTE changes owner, SUPERSEDE owner semantics remain unresolved;
-- one active keyed dependency latch with exact-match release as the smallest admitted V1; no invented multi-blocker semantics;
-- `commit_order` is non-normative currentness metadata unless an independent later contract proves otherwise;
-- orthogonal factual currentness/blocking/terminal/owner/authority/artifact-target/lease-execution/executability/source axes plus controlling/rejected IDs and lineage digest;
-- workload contribution derived afterward under explicit `workload_policy_ref/version`;
-- assignment currentness eligibility is only a precondition, never final protected-effect eligibility; external effect fails closed without current target precondition/readback.
+## Verified temporal/config defects
+- B11 frozen Settings currently hard-code `GPT-5.6 Thinking` while current platform is GPT-5.6 Sol. Fix by making current model runtime/platform-observed, not by freezing Sol. Qualification receipts keep exact run model/mode provenance. Bug reported.
+- B11 also freezes Bob as current build route. Current B12 Rebind validator candidate Drive `1wKrp36nkBBqlwL19sxD1HcCbsakMiqvQ` mechanically requires that Bob-current-route literal and `workstream/build-bob` in four long-lived docs. This is verified validator/config staleness; B12 Contract itself does not need current-assignee/model fields. Bug reported.
+- B11 is 7894/7900 chars, so repair is budget-neutral/compacted and requires B12 exact Settings identity rebind.
 
-Bob 3608 is READY_FOR_REVIEW proposal only; no successor bytes are authorized. H30/MA15/MU8 remain the independent resume gate and have updated falsification requests.
+## Path ceiling
+Fresh native-base -> ddcd compare proves B11 is the sole already-consumed modified path. Original ultimate ceiling remains 19 MODIFY + 54 CREATE = 73. Verified B11 re-fix fits that ultimate pathset but future B15 resume must explicitly supersede the Settings freeze and rebind remaining-from-current-head from 18+54=72 back to 19+54=73. Package and Voice remain no-touch. Canonical 3645.
 
-## H29
-Canonical 3612 records a fresh bounded present-runtime `AUDITED_EXPOSED_SURFACE_CONFINED = FAIL / NOT_ELIGIBLE` negative control. GitHub exposes 89 tools with generic mutators and admin permission on the protected R9A0 repo; Supabase exposes 29 tools including generic SQL/DDL/lifecycle routes, and generic SQL reaches the protected project as postgres on PG 17.6 with database CREATE. GitHub and Supabase app-specific ChatGPT permissions both read `Allow all actions`; global default is `Allow low-risk actions`. This is snapshot-scoped exposed-surface evidence, not global provider-scope or NO_BYPASS proof. No write probe or permission mutation was performed. H29 remains Hephaestus-owned and open.
+## Parallel lanes
+- H29 bounded current exposed-surface verdict remains FAIL_NOT_ELIGIBLE; refreshed 3640.
+- H27 remains open.
+- MA16 / 3643: volatile-runtime vs package-provenance audit.
+- MU9 / 3644: temporal validator-sentinel hostiles.
+- Bob paused checkpoint: 3642.
 
-## Other lanes
-H27 remains open for deterministic canonical-byte/digest construction. MA13/MA14, MU6/MU7 and Vera V5/V6 remain separate background lanes unless newer events amend them.
+## Next gate
+Check H30 first. On explicit clean PASS, close H30 with correct top-level state transition, freshly verify Bob branch still exact, then issue precise B15 resume amendment allowing corrected B11/B12/validator/docs/currentness bytes within the original native-base 73-path ultimate ceiling. No merge/deploy/install/provider mutation authority follows from resume.
 
 ## Persistence boundary
-This repository is the privacy-minimized Voss WORKING_PROJECT save surface. The checkpoint supports durable work-context resumption only and does not claim same-runtime continuity, lived waiting, hidden work, autobiographical memory, or uninterrupted subjective experience.
+This repository is the privacy-minimized Voss WORKING_PROJECT save surface. It proves durable work-state resumption only, not subjective continuity or autobiographical memory.
