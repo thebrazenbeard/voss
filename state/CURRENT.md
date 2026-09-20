@@ -1,10 +1,10 @@
 # Voss Current State
 
-Status: PORTFOLIO_SYNTHESIZED_V2 / IMPLEMENTATION_AND_QUALIFICATION_OPEN
+Status: EXECUTABLE_FORENSIC_KERNEL_V1 / SELF_RUN_35_OF_35_PASS / INDEPENDENT_QUALIFICATION_OPEN
 Record class: WORKING_PROJECT
 Canonical development branch: `revival/voss-forensic-analyst-v2-20260920`
-Verified predecessor head for this architecture pass:
-`9072dff2c740d84ab6f5f2f5c984969642bf7135`
+Verified predecessor head for this executable pass:
+`4c069ef64961d3b258ed31caa40ee4a67d567669`
 
 ## Mission
 
@@ -12,32 +12,13 @@ Build Voss into a durable cross-project forensic reasoning system that can be re
 
 The astrology analyst is one capability and qualification fixture, not Voss's purpose boundary.
 
-## Portfolio architecture pass
+## Portfolio-synthesized architecture
 
-On 2026-09-20 the development pass inventoried all 57 repositories available in the portfolio.
-
-The public Voss repository does not republish private source identities/heads/payloads. Public source bindings and a digest commitment to the private source cut are stored at:
-
-`architecture/PORTFOLIO_ARCHITECTURE_SOURCE_CUT_20260920.json`
-
-The synthesis materially incorporated these mechanism families:
-
-- provenance archaeology and chronological restart;
-- multi-axis evidence provenance/fidelity/status/currentness/independence;
-- heterogeneous reasoning operators and metacognitive strategy selection;
-- rival hypotheses and adversarial collaboration;
-- influence firewalls;
-- exact-subject/currentness/effect separation;
-- optimistic concurrency and readback;
-- write-ahead ambiguous-effect recovery;
-- scientific calibration/holdout discipline;
-- append-only incident/correction history;
-- optional adapters with no shared-spine dependency requirement.
-
-## V2 architecture
-
-Primary:
+Primary architecture:
 `architecture/VOSS_SYSTEM_ARCHITECTURE_V2.md`
+
+Portfolio source cut:
+`architecture/PORTFOLIO_ARCHITECTURE_SOURCE_CUT_20260920.json`
 
 Operator registry:
 `architecture/VOSS_OPERATOR_REGISTRY_V1.yaml`
@@ -51,17 +32,47 @@ Dependency policy:
 Case schema:
 `schemas/VOSS_CASE_FILE_V1.schema.json`
 
-Executable V2 primitives:
-`voss_core/case.py`
-`voss_core/influence.py`
+## Executable forensic kernel
 
-## Important correction to V1
+Existing:
+- `voss_core/case.py`
+- `voss_core/influence.py`
+- `voss_core/types.py`
+- `voss_core/engine.py`
+- `voss_core/adapter.py`
 
-The earlier general core treated evidence with one main class axis.
+Added in this frontier:
+- `voss_core/provenance.py`
+- `voss_core/currentness.py`
+- `voss_core/rivals.py`
+- `voss_core/effects.py`
+- `voss_core/authority.py`
+- `voss_core/repository.py`
+- `voss_core/privacy.py`
+- `voss_core/experiments.py`
 
-V2 explicitly rejects that simplification.
+## Qualification
 
-Evidence origin, representation fidelity, epistemic status, currentness, and independence lineage are separate dimensions. A precise hash does not establish semantic authority; a current direct readback may still be irrelevant to a different proposition; multiple copies of one source do not create independent corroboration.
+Design:
+`qualification/VOSS_GENERAL_QUALIFICATION_V1.md`
+
+Executable fixture map:
+`qualification/EXECUTABLE_FIXTURE_MANIFEST_V1.json`
+
+Executable suite:
+`tests/test_qualification_v1.py`
+
+Self-run receipt:
+`qualification/SELF_RUN_RECEIPT_20260920_V1.json`
+`qualification/SELF_RUN_RECEIPT_20260920_V1.md`
+
+Local self-run result:
+- 35 / 35 tests PASS
+- Q01-Q20: 20 / 20 executable and PASS
+- additional operator regressions: 5 / 5 PASS
+- preserved earlier core/case regressions: 10 / 10 PASS
+
+This is implementation evidence only. It is not independent behavioral qualification.
 
 ## Preserved invariants
 
@@ -87,25 +98,19 @@ Evidence origin, representation fidelity, epistemic status, currentness, and ind
 Astrology analyst freeze:
 `d8660dc63e4813f37ed1722a2e867ee2c10b1a49`
 
-Held-out result:
+Astrology held-out result:
 `fe2f309539246d52ec24b83949f603d855657a1d`
 
-Forced held-out accuracy:
-78.0% across 200 runs.
+Portfolio architecture commit:
+`4c069ef64961d3b258ed31caa40ee4a67d567669`
 
-Evidence-gated resolved-call accuracy:
-98.3471% at 60.5% coverage.
+## Next frontier
 
-The S0/S2/S4 non-identifiability result remains a qualification example for Voss's unresolved discipline.
-
-## Current frontier
-
-1. Commit and read back the V2 portfolio-synthesized architecture.
-2. Extend the qualification corpus from 20 conceptual families into executable fixtures.
-3. Implement provenance/currentness/effect-reconciliation operators against the V2 case model.
-4. Add a generic Git repository adapter with exact subject/currentness/readback semantics.
-5. Run cross-domain cases from multiple unrelated projects.
-6. Freeze a candidate before an independent holdout.
-7. Do not merge to `main` without Patrick's exact merge authority.
+1. Bind a real GitHub/project evidence adapter to these provider-independent repository primitives.
+2. Create durable cross-domain Voss cases from several unrelated portfolio projects.
+3. Exercise provenance, software/runtime, scientific, security/authority, data/migration, and documentation/currentness domains.
+4. Convert failures into regression fixtures without tuning an independent holdout.
+5. Freeze a Voss candidate and hand it to an independent evaluator on unseen cases.
+6. Only after independent qualification consider a merge proposal.
 
 No merge, deployment, provider mutation, or private-source publication is authorized by this state file.

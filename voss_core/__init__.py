@@ -1,55 +1,37 @@
 from .adapter import ProjectAdapter, ProjectSnapshot
+from .authority import AuthorityEvidence, AuthoritySource, effect_authorized
 from .case import (
-    CaseFile,
-    CaseModelError,
-    ClaimRecord,
-    CurrentnessStatus,
-    EpistemicStatus,
-    EvidenceFidelity,
-    EvidenceOrigin,
-    EvidenceRecord,
-    PropositionType,
+    CaseFile, CaseModelError, ClaimRecord, CurrentnessStatus, EpistemicStatus,
+    EvidenceFidelity, EvidenceOrigin, EvidenceRecord, PropositionType,
     evidence_satisfies_claim,
 )
+from .currentness import CurrentnessResolution, ResolutionState, StateCandidate, resolve_currentness
+from .effects import OperationEvent, OperationState, ReconcileAction, reconcile_operation, validate_operation_history
 from .engine import AuditEngine, unresolved_by_default
-from .influence import (
-    InfluenceClass,
-    InfluenceFirewall,
-    InfluenceSignal,
+from .experiments import ExperimentProtocol, ExperimentValidity, evaluate_protocol
+from .influence import InfluenceClass, InfluenceFirewall, InfluenceSignal
+from .privacy import PrivacyItem, admissible_for_case
+from .provenance import (
+    ProvenanceCandidate, ProvenanceRelation, ProvenanceTrace, TimeInterval,
+    parse_time_interval, requires_chronology_restart, trace_provenance,
 )
-from .types import (
-    Claim,
-    EffectState,
-    Evidence,
-    EvidenceClass,
-    EvidenceError,
-    Finding,
-    VerdictState,
+from .repository import (
+    GitReadAdapter, MutationGate, RepositorySnapshot, ReviewBinding,
+    ReviewFreshness, check_review_freshness, mutation_gate,
 )
+from .rivals import Hypothesis, HypothesisAssessment, RivalResolution, RivalState, resolve_rivals
+from .types import Claim, EffectState, Evidence, EvidenceClass, EvidenceError, Finding, VerdictState
 
 __all__ = [
-    "AuditEngine",
-    "CaseFile",
-    "CaseModelError",
-    "Claim",
-    "ClaimRecord",
-    "CurrentnessStatus",
-    "EffectState",
-    "EpistemicStatus",
-    "Evidence",
-    "EvidenceClass",
-    "EvidenceError",
-    "EvidenceFidelity",
-    "EvidenceOrigin",
-    "EvidenceRecord",
-    "Finding",
-    "InfluenceClass",
-    "InfluenceFirewall",
-    "InfluenceSignal",
-    "ProjectAdapter",
-    "ProjectSnapshot",
-    "PropositionType",
-    "VerdictState",
-    "evidence_satisfies_claim",
-    "unresolved_by_default",
+    "AuditEngine","AuthorityEvidence","AuthoritySource","CaseFile","CaseModelError","Claim","ClaimRecord",
+    "CurrentnessResolution","CurrentnessStatus","EffectState","EpistemicStatus","Evidence","EvidenceClass",
+    "EvidenceError","EvidenceFidelity","EvidenceOrigin","EvidenceRecord","ExperimentProtocol","ExperimentValidity",
+    "Finding","GitReadAdapter","Hypothesis","HypothesisAssessment","InfluenceClass","InfluenceFirewall",
+    "InfluenceSignal","MutationGate","OperationEvent","OperationState","PrivacyItem","ProjectAdapter","ProjectSnapshot",
+    "PropositionType","ProvenanceCandidate","ProvenanceRelation","ProvenanceTrace","ReconcileAction",
+    "RepositorySnapshot","ResolutionState","ReviewBinding","ReviewFreshness","RivalResolution","RivalState",
+    "StateCandidate","TimeInterval","VerdictState","admissible_for_case","check_review_freshness","effect_authorized",
+    "evidence_satisfies_claim","evaluate_protocol","mutation_gate","parse_time_interval","reconcile_operation",
+    "requires_chronology_restart","resolve_currentness","resolve_rivals","trace_provenance",
+    "unresolved_by_default","validate_operation_history",
 ]

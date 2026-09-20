@@ -1,0 +1,50 @@
+{
+  "schema": "VOSS_SELF_RUN_QUALIFICATION_RECEIPT_V1",
+  "run_date": "2026-09-20",
+  "candidate_predecessor_head": "4c069ef64961d3b258ed31caa40ee4a67d567669",
+  "execution_class": "LOCAL_SELF_RUN_IMPLEMENTATION_EVIDENCE",
+  "independent": false,
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41"
+  },
+  "test_command": "python -m unittest discover -s tests -v",
+  "test_counts": {
+    "total": 35,
+    "passed": 35,
+    "failed": 0,
+    "errors": 0
+  },
+  "qualification_families": {
+    "planned": 20,
+    "executable": 20,
+    "passed": 20
+  },
+  "operator_regressions": {
+    "added": 5,
+    "passed": 5
+  },
+  "preserved_regressions": {
+    "prior_v1_core_tests": 4,
+    "prior_v2_case_tests": 6,
+    "passed": 10
+  },
+  "new_modules": [
+    "voss_core/provenance.py",
+    "voss_core/currentness.py",
+    "voss_core/rivals.py",
+    "voss_core/effects.py",
+    "voss_core/authority.py",
+    "voss_core/repository.py",
+    "voss_core/privacy.py",
+    "voss_core/experiments.py"
+  ],
+  "fixture_manifest": "qualification/EXECUTABLE_FIXTURE_MANIFEST_V1.json",
+  "executable_suite": "tests/test_qualification_v1.py",
+  "claim_ceiling": "Demonstrates that the self-run deterministic implementation satisfies the encoded fixtures in the stated local environment. Does not establish independent behavioral qualification, production installation, runtime activation, or correctness outside the encoded cases.",
+  "notes": [
+    "The new package export preserves the older V1/V2 public Python exports.",
+    "The test run used the exact new source contents later submitted as Git blobs plus the fetched existing Voss core/test sources.",
+    "An unrelated artifact_tool startup warning appeared on stderr; unittest exited 0 and all 35 tests reported PASS."
+  ]
+}
