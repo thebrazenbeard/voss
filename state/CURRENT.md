@@ -1,105 +1,72 @@
 # Voss Current State
 
-Status: REAL_PROJECT_GENERALIZATION_V1 / SIX_LIVE_CASES_COMPLETE / FREEZE_NEXT
+Status: CANDIDATE_FROZEN / INDEPENDENT_HOLDOUT_SEALED / EVALUATOR_WAITING
 Record class: WORKING_PROJECT
 Canonical development branch: `revival/voss-forensic-analyst-v2-20260920`
-Verified predecessor head for this real-project pass:
-`6ea3891b734b3f4bd46f4a383f03768dcc4f193c`
 
-## Mission
+## Frozen candidate
 
-Build Voss into a durable cross-project forensic reasoning system that can audit real heterogeneous projects without collapsing source, currentness, authority, runtime, effect, provenance, scientific inference, or documentation state.
+Candidate commit:
+`4d964da8d8884e8df63e4382433f9290de5a42a8`
 
-## Real-project audit corpus
+Candidate tree:
+`c6d284904a227a1f4103e4894816919ef53257af`
 
-Report:
-`qualification/REAL_PROJECT_AUDIT_REPORT_20260920_V1.json`
-`qualification/REAL_PROJECT_AUDIT_REPORT_20260920_V1.md`
+The candidate is frozen for independent qualification.
 
-Cases:
-- `cases/real/20260920/RP01_ROOTS_PROVENANCE.json`
-- `cases/real/20260920/RP02_WIP_SOURCE_RUNTIME.json`
-- `cases/real/20260920/RP03_WORLD_ZERO_SCIENCE.json`
-- `cases/real/20260920/RP04_PROJECT_RUNNER_AUTHORITY.json`
-- `cases/real/20260920/RP05_ON_THEO_BRANCH_DATA_STATE.json`
-- `cases/real/20260920/RP06_REZON_DOCUMENTATION_CURRENTNESS.json`
+The commit containing this state/holdout metadata is **not** a replacement candidate. It records the freeze after the candidate was created.
 
-Domains:
-- provenance
-- software/runtime
-- scientific inference
-- security/authority
-- migration/data-state
-- documentation/currentness
+Any code/architecture/test/operator change after the candidate commit creates a new candidate and requires a new holdout evaluation.
 
-Findings derived from case corpus:
+Freeze record:
+`qualification/FROZEN_CANDIDATE_20260920_V1.json`
+
+## Development evidence before freeze
+
+Synthetic/deterministic self-run:
+- 35 / 35 PASS
+- not independent
+
+Real-project audit:
+- 6 public projects
+- 16 findings
 - PASS: 5
 - FAIL: 8
 - UNRESOLVED: 3
+- not independent
 
-These are self-run real-project audits, not independent qualification.
+Real-project report:
+`qualification/REAL_PROJECT_AUDIT_REPORT_20260920_V1.json`
 
-## Real defects found and repaired
+Real defects discovered and repaired before freeze:
+- VOSS-REAL-001: single-subject case model
+- VOSS-REAL-002: mutable GitHub ref read race
+- VOSS-REAL-003: aggregate report/case-corpus drift
 
-### VOSS-REAL-001 — multi-subject cases
+## Independent holdout
 
-Problem:
-single-subject `CaseFile` cannot faithfully represent real cross-ref/source-vs-runtime comparison cases.
-
-Repair:
-`voss_core/multisubject.py`
-
-### VOSS-REAL-002 — live GitHub mutable-ref race
-
-Problem:
-reading a file through a mutable branch name can silently mix frontiers if the branch moves between ref and content reads.
-
-Repair:
-`voss_adapters/github_live.py`
+Manifest:
+`qualification/INDEPENDENT_HOLDOUT_MANIFEST_20260920_V1.json`
 
 Protocol:
-read ref -> fetch file by exact head -> reread ref -> mark stale if moved.
+`qualification/INDEPENDENT_EVALUATOR_PROTOCOL_V1.md`
 
-Adapter contract:
-`architecture/GITHUB_LIVE_ADAPTER_V1.md`
+Six different public repositories are bound at exact heads.
 
-### VOSS-REAL-003 — aggregate report drift
+The development agent intentionally did not open holdout source content for this evaluation or supply expected verdicts.
 
-Problem:
-the first manually written report counts did not match the actual case corpus.
+Prior portfolio architecture mining did expose repository names/themes, so the valid claim is **unseen exact cases/claims**, not unseen repository identities.
 
-Repair:
-`voss_core/reporting.py`
+## Current frontier
 
-Rule:
-aggregate verdict counts are derived from case files; mismatches fail regression.
+WAITING: genuinely separate evaluator.
 
-## Preserved prior qualification
+This development chat must not self-score the sealed holdout and call the result independent.
 
-Synthetic/unit qualification predecessor:
-- 35 / 35 local self-run PASS
-- Q01-Q20 executable
-- prior core/case regressions preserved
+When an independent receipt arrives:
+- verify candidate/holdout bindings;
+- classify PASS/FAIL/INCONCLUSIVE/INVALIDATED;
+- preserve failures;
+- if repair is needed, create a new candidate and a fresh holdout generation.
 
-Receipt:
-`qualification/SELF_RUN_RECEIPT_20260920_V1.json`
-
-## Current verification ceiling
-
-The live project evidence was read directly from GitHub and bound to exact commit/blob identities.
-
-New adapter/multi-subject/reporting source has been syntax-checked and regression cases prepared.
-
-This pass must not be called independent qualification.
-
-## Next frontier
-
-1. Commit this real-project corpus and repairs.
-2. Verify exact readback.
-3. Freeze that exact candidate commit.
-4. Create a holdout/evaluator packet that does not contain expected verdicts.
-5. Do not modify the frozen candidate while evaluating it.
-6. Use a genuinely separate evaluator runtime/person before claiming independent behavioral qualification.
-7. Convert independent failures into a new post-freeze development candidate, never by editing the evaluated candidate.
-
-No merge to `main`, deployment, provider mutation, or private-source publication is authorized.
+No merge, deployment, installation, provider mutation, credential change, or private-source publication is authorized.
