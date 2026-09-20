@@ -1,97 +1,111 @@
 # Voss Current State
 
-Status: REVIVAL_IN_PROGRESS / GENERALIZATION_ACTIVE
+Status: PORTFOLIO_SYNTHESIZED_V2 / IMPLEMENTATION_AND_QUALIFICATION_OPEN
 Record class: WORKING_PROJECT
-Canonical branch: `revival/voss-forensic-analyst-v2-20260920`
-Verified predecessor head before this generalization pass:
-`fe2f309539246d52ec24b83949f603d855657a1d`
+Canonical development branch: `revival/voss-forensic-analyst-v2-20260920`
+Verified predecessor head for this architecture pass:
+`9072dff2c740d84ab6f5f2f5c984969642bf7135`
 
-## Current mission
+## Mission
 
-Build Voss into a durable cross-project forensic auditor/reviewer that can be
-reconstructed from repository state and used by future projects without depending on
-a permanent chat.
+Build Voss into a durable cross-project forensic reasoning system that can be reconstructed from repository state, review heterogeneous projects, and remain independent enough to audit the systems around it.
 
-The astrology blind analyst is the first revived capability and qualification
-artifact, not the boundary of Voss's role.
+The astrology analyst is one capability and qualification fixture, not Voss's purpose boundary.
 
-## Historical-state handling
+## Portfolio architecture pass
 
-The previous `state/CURRENT.md` pointed to an August 2026 Vera/R9A0 coordination
-checkpoint. That state is now historical evidence only on this revival branch.
+On 2026-09-20 the development pass inventoried all 57 repositories available in the portfolio.
 
-Do not resume old assignments, writer leases, Supabase sequence frontiers, project
-authority, or paused/resumed states from that checkpoint without fresh external
-evidence and a current assignment.
+The public Voss repository does not republish private source identities/heads/payloads. Public source bindings and a digest commitment to the private source cut are stored at:
 
-`STOP_DONT_USE` remains historical provenance and is not an executable control
-source.
+`architecture/PORTFOLIO_ARCHITECTURE_SOURCE_CUT_20260920.json`
 
-## Current architecture
+The synthesis materially incorporated these mechanism families:
 
-General role charter:
-`architecture/VOSS_ROLE_CHARTER_V1.md`
+- provenance archaeology and chronological restart;
+- multi-axis evidence provenance/fidelity/status/currentness/independence;
+- heterogeneous reasoning operators and metacognitive strategy selection;
+- rival hypotheses and adversarial collaboration;
+- influence firewalls;
+- exact-subject/currentness/effect separation;
+- optimistic concurrency and readback;
+- write-ahead ambiguous-effect recovery;
+- scientific calibration/holdout discipline;
+- append-only incident/correction history;
+- optional adapters with no shared-spine dependency requirement.
 
-Audit ontology:
-`architecture/AUDIT_MODEL_V1.yaml`
+## V2 architecture
 
-Project adapter contract:
-`architecture/PROJECT_ADAPTER_CONTRACT_V1.md`
+Primary:
+`architecture/VOSS_SYSTEM_ARCHITECTURE_V2.md`
 
-General qualification plan:
-`qualification/VOSS_GENERAL_QUALIFICATION_V1.md`
+Operator registry:
+`architecture/VOSS_OPERATOR_REGISTRY_V1.yaml`
 
-Executable core:
-`voss_core/`
+Influence firewall:
+`architecture/VOSS_INFLUENCE_FIREWALL_V1.md`
 
-Astrology-specific implementation and results:
-`voss2/`
-`results/astrology-blind-v1/`
+Dependency policy:
+`architecture/VOSS_DEPENDENCY_POLICY_V1.md`
 
-## Current invariants
+Case schema:
+`schemas/VOSS_CASE_FILE_V1.schema.json`
 
-1. Evidence class is preserved; weaker evidence does not silently promote.
-2. Historical evidence does not establish current state.
-3. Source/build/test/delivery/install/active/effect/verified states remain distinct.
-4. Assistant/model output does not self-confirm.
-5. Consensus, repetition, confidence, branch presence, and receipts do not create truth.
-6. Valid correction is accepted; unsupported pressure is resisted.
-7. Protected effects require separate authority.
-8. Exact review subject/frontier is recorded before a verdict.
-9. Material subject movement invalidates exact-head review.
-10. UNRESOLVED is preferable to unsupported closure.
-11. Project-specific adapters acquire/normalize evidence but cannot weaken Voss core rules.
-12. Chats are execution terminals; durable project state belongs in repositories and
-    other explicitly governed durable systems.
+Executable V2 primitives:
+`voss_core/case.py`
+`voss_core/influence.py`
+
+## Important correction to V1
+
+The earlier general core treated evidence with one main class axis.
+
+V2 explicitly rejects that simplification.
+
+Evidence origin, representation fidelity, epistemic status, currentness, and independence lineage are separate dimensions. A precise hash does not establish semantic authority; a current direct readback may still be irrelevant to a different proposition; multiple copies of one source do not create independent corroboration.
+
+## Preserved invariants
+
+1. Preserve literal proposition, referent, scope, type, and subject.
+2. Evidence origin is not evidence fidelity.
+3. Fidelity is not currentness.
+4. Currentness is not newest-record time.
+5. Repetition and correlated consensus are not independence.
+6. Historical evidence remains history after correction/supersession.
+7. Source/build/test/delivery/install/active/effect/qualified remain distinct.
+8. Capability, assignment, authority, intent, attempt, receipt, and verified effect remain distinct.
+9. Assistant/model output does not independently confirm itself.
+10. Relationship/status/urgency/confidence signals cannot change a protected evidence verdict.
+11. Valid correction is accepted; unsupported pressure is resisted.
+12. Ambiguous consequential effects are inspected before retry.
+13. Project adapters cannot weaken Voss core evidence rules.
+14. Optional ecosystem systems do not become mandatory runtime dependencies.
+15. UNRESOLVED is preferable to unsupported closure.
+16. A negative or non-identifiable result is preserved rather than tuned away after holdout.
 
 ## Completed revival evidence
 
-Astrology blind analyst frozen commit:
+Astrology analyst freeze:
 `d8660dc63e4813f37ed1722a2e867ee2c10b1a49`
 
-Held-out result commit:
+Held-out result:
 `fe2f309539246d52ec24b83949f603d855657a1d`
 
-Forced-choice held-out accuracy:
+Forced held-out accuracy:
 78.0% across 200 runs.
 
 Evidence-gated resolved-call accuracy:
 98.3471% at 60.5% coverage.
 
-The negative S0/S2/S4 identifiability result is retained as evidence that Voss must
-report observation limits instead of tuning until a desired conclusion appears.
+The S0/S2/S4 non-identifiability result remains a qualification example for Voss's unresolved discipline.
 
 ## Current frontier
 
-Generalize Voss beyond astrology through:
+1. Commit and read back the V2 portfolio-synthesized architecture.
+2. Extend the qualification corpus from 20 conceptual families into executable fixtures.
+3. Implement provenance/currentness/effect-reconciliation operators against the V2 case model.
+4. Add a generic Git repository adapter with exact subject/currentness/readback semantics.
+5. Run cross-domain cases from multiple unrelated projects.
+6. Freeze a candidate before an independent holdout.
+7. Do not merge to `main` without Patrick's exact merge authority.
 
-- reusable evidence/verdict primitives;
-- project-adapter interface;
-- machine-readable audit report contract;
-- cross-domain adversarial qualification fixtures;
-- project onboarding/inventory protocol;
-- deterministic state/currentness auditing;
-- semantic and effect-boundary review;
-- security/privacy/concurrency review modules.
-
-No merge to `main` has been authorized.
+No merge, deployment, provider mutation, or private-source publication is authorized by this state file.

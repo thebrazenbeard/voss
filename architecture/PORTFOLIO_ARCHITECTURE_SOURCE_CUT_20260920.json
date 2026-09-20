@@ -1,0 +1,165 @@
+{
+  "schema": "VOSS_PORTFOLIO_ARCHITECTURE_SOURCE_CUT_V1",
+  "observed_date": "2026-09-20",
+  "total_repositories_consulted": 57,
+  "public_repositories_explicitly_bound": 13,
+  "private_repositories_consulted": 44,
+  "privacy_rule": "Private repository identities, paths, payloads, and heads are intentionally not published in this public Voss repository. A digest of the private source cut is retained so a later authorized private reconciliation can verify the same cut.",
+  "private_source_cut_sha256": "9345cd5001afccc64faba2032ba51241b50a4cd427b446ac02d2772e41cad42d",
+  "private_source_cut_contents": "44 private default-branch observations plus one private supplemental architecture-bearing branch; mapping withheld from public repository",
+  "public_sources": [
+    {
+      "repo": "thebrazenbeard/voss",
+      "branch": "main",
+      "sha": "54478372002bb24c6df733092a32abbdd1fa8d3c",
+      "role": [
+        "SELF_PROVENANCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/roots",
+      "branch": "main",
+      "sha": "7fab72635f319c633b480174c8a0687901ac1db2",
+      "role": [
+        "PROVENANCE_REFERENCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/discovery",
+      "branch": "main",
+      "sha": "96e6f8e9c776047f9068c897eab0406324187166",
+      "role": [
+        "ANTI_SPINE_REFERENCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/project-runner",
+      "branch": "main",
+      "sha": "bc05812b560b4fcde3a362e72fba04c626cafac8",
+      "role": [
+        "CURRENTNESS",
+        "AUTHORITY",
+        "MUTATION_SAFETY"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/testament",
+      "branch": "main",
+      "sha": "76f70643484ff22684f535d376e10e72c4aefba9",
+      "role": [
+        "MULTI_TRADITION_DOMAIN_FIXTURE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/transcendence",
+      "branch": "main",
+      "sha": "68e7a794d6134e8319121404f31062288dc8d6a3",
+      "role": [
+        "COGNITIVE_ARCHITECTURE_REFERENCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/rezon",
+      "branch": "main",
+      "sha": "e3d7a41eccb49a9f403ef66f511faef677ceec1b",
+      "role": [
+        "REASONING_ARCHITECTURE_REFERENCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/hc-brain",
+      "branch": "main",
+      "sha": "618245b54fb923c7a204892c6953ab6d1c5dac57",
+      "role": [
+        "COGNITIVE_ARCHITECTURE_REFERENCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/world-zero",
+      "branch": "main",
+      "sha": "5ab39621d090079d24de40261906b64413c6f995",
+      "role": [
+        "SCIENTIFIC_COMPARISON",
+        "HOLDOUT_DISCIPLINE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/driftguard",
+      "branch": "main",
+      "sha": "2772aff77929ef1310b8bcf0b5103c466c8c8010",
+      "role": [
+        "DRIFT_MONITORING_REFERENCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/on-theo",
+      "branch": "main",
+      "sha": "eedbcf660c2cfe6cff5636e798806b0cd3d56efc",
+      "role": [
+        "EVIDENCE_CATEGORY",
+        "SPECULATION_FIREWALL"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/wip",
+      "branch": "main",
+      "sha": "12a7c23dbe0482fd7bfe63659e54526778efef1e",
+      "role": [
+        "CRASH_RECOVERY",
+        "AMBIGUOUS_EFFECT_RECONCILIATION"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/mosaic",
+      "branch": "main",
+      "sha": "a3115031ec716526532b32dc004303b4042e4a26",
+      "role": [
+        "MODULARITY_FIXTURE"
+      ]
+    }
+  ],
+  "supplemental_public_cuts": [
+    {
+      "repo": "thebrazenbeard/roots",
+      "branch": "one/roots-origin-conflict-claim-v1-20260918",
+      "sha": "e47a58e59fb33ffbda5d36d85a2b49fbbf6c9b61",
+      "role": [
+        "PROVENANCE_ARCHITECTURE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/rezon",
+      "branch": "state/rezon-chat-continuation-r47-0ca0f128",
+      "sha": "12e1f4e98201081fd7d0394789046f2bf561bb64",
+      "role": [
+        "REASONING_ARCHITECTURE",
+        "METACOGNITION",
+        "SEMANTIC_PROVENANCE"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/voss",
+      "branch": "revival/voss-forensic-analyst-v2-20260920",
+      "sha": "9072dff2c740d84ab6f5f2f5c984969642bf7135",
+      "role": [
+        "PREDECESSOR_REVIVAL_HEAD"
+      ]
+    },
+    {
+      "repo": "thebrazenbeard/on-theo",
+      "branch": "astrology",
+      "sha": "1f239b1d9d371ec3782ae9f1113a74bdb927d4bb",
+      "role": [
+        "BLIND_ANALYST_QUALIFICATION_FIXTURE"
+      ]
+    }
+  ],
+  "synthesis_rules": [
+    "Repository presence does not make a runtime dependency.",
+    "Private source material may inform architecture without being republished.",
+    "Default branches are observations, not timeless authority.",
+    "Supplemental branches are bound only for the mechanisms actually inspected.",
+    "Architecture borrows invariants and contracts, not stale assignments or authority.",
+    "Voss must remain reconstructible when any optional portfolio component is unavailable."
+  ]
+}
