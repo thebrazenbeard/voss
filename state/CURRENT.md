@@ -1,116 +1,105 @@
 # Voss Current State
 
-Status: EXECUTABLE_FORENSIC_KERNEL_V1 / SELF_RUN_35_OF_35_PASS / INDEPENDENT_QUALIFICATION_OPEN
+Status: REAL_PROJECT_GENERALIZATION_V1 / SIX_LIVE_CASES_COMPLETE / FREEZE_NEXT
 Record class: WORKING_PROJECT
 Canonical development branch: `revival/voss-forensic-analyst-v2-20260920`
-Verified predecessor head for this executable pass:
-`4c069ef64961d3b258ed31caa40ee4a67d567669`
+Verified predecessor head for this real-project pass:
+`6ea3891b734b3f4bd46f4a383f03768dcc4f193c`
 
 ## Mission
 
-Build Voss into a durable cross-project forensic reasoning system that can be reconstructed from repository state, review heterogeneous projects, and remain independent enough to audit the systems around it.
+Build Voss into a durable cross-project forensic reasoning system that can audit real heterogeneous projects without collapsing source, currentness, authority, runtime, effect, provenance, scientific inference, or documentation state.
 
-The astrology analyst is one capability and qualification fixture, not Voss's purpose boundary.
+## Real-project audit corpus
 
-## Portfolio-synthesized architecture
+Report:
+`qualification/REAL_PROJECT_AUDIT_REPORT_20260920_V1.json`
+`qualification/REAL_PROJECT_AUDIT_REPORT_20260920_V1.md`
 
-Primary architecture:
-`architecture/VOSS_SYSTEM_ARCHITECTURE_V2.md`
+Cases:
+- `cases/real/20260920/RP01_ROOTS_PROVENANCE.json`
+- `cases/real/20260920/RP02_WIP_SOURCE_RUNTIME.json`
+- `cases/real/20260920/RP03_WORLD_ZERO_SCIENCE.json`
+- `cases/real/20260920/RP04_PROJECT_RUNNER_AUTHORITY.json`
+- `cases/real/20260920/RP05_ON_THEO_BRANCH_DATA_STATE.json`
+- `cases/real/20260920/RP06_REZON_DOCUMENTATION_CURRENTNESS.json`
 
-Portfolio source cut:
-`architecture/PORTFOLIO_ARCHITECTURE_SOURCE_CUT_20260920.json`
+Domains:
+- provenance
+- software/runtime
+- scientific inference
+- security/authority
+- migration/data-state
+- documentation/currentness
 
-Operator registry:
-`architecture/VOSS_OPERATOR_REGISTRY_V1.yaml`
+Findings derived from case corpus:
+- PASS: 5
+- FAIL: 8
+- UNRESOLVED: 3
 
-Influence firewall:
-`architecture/VOSS_INFLUENCE_FIREWALL_V1.md`
+These are self-run real-project audits, not independent qualification.
 
-Dependency policy:
-`architecture/VOSS_DEPENDENCY_POLICY_V1.md`
+## Real defects found and repaired
 
-Case schema:
-`schemas/VOSS_CASE_FILE_V1.schema.json`
+### VOSS-REAL-001 — multi-subject cases
 
-## Executable forensic kernel
+Problem:
+single-subject `CaseFile` cannot faithfully represent real cross-ref/source-vs-runtime comparison cases.
 
-Existing:
-- `voss_core/case.py`
-- `voss_core/influence.py`
-- `voss_core/types.py`
-- `voss_core/engine.py`
-- `voss_core/adapter.py`
+Repair:
+`voss_core/multisubject.py`
 
-Added in this frontier:
-- `voss_core/provenance.py`
-- `voss_core/currentness.py`
-- `voss_core/rivals.py`
-- `voss_core/effects.py`
-- `voss_core/authority.py`
-- `voss_core/repository.py`
-- `voss_core/privacy.py`
-- `voss_core/experiments.py`
+### VOSS-REAL-002 — live GitHub mutable-ref race
 
-## Qualification
+Problem:
+reading a file through a mutable branch name can silently mix frontiers if the branch moves between ref and content reads.
 
-Design:
-`qualification/VOSS_GENERAL_QUALIFICATION_V1.md`
+Repair:
+`voss_adapters/github_live.py`
 
-Executable fixture map:
-`qualification/EXECUTABLE_FIXTURE_MANIFEST_V1.json`
+Protocol:
+read ref -> fetch file by exact head -> reread ref -> mark stale if moved.
 
-Executable suite:
-`tests/test_qualification_v1.py`
+Adapter contract:
+`architecture/GITHUB_LIVE_ADAPTER_V1.md`
 
-Self-run receipt:
+### VOSS-REAL-003 — aggregate report drift
+
+Problem:
+the first manually written report counts did not match the actual case corpus.
+
+Repair:
+`voss_core/reporting.py`
+
+Rule:
+aggregate verdict counts are derived from case files; mismatches fail regression.
+
+## Preserved prior qualification
+
+Synthetic/unit qualification predecessor:
+- 35 / 35 local self-run PASS
+- Q01-Q20 executable
+- prior core/case regressions preserved
+
+Receipt:
 `qualification/SELF_RUN_RECEIPT_20260920_V1.json`
-`qualification/SELF_RUN_RECEIPT_20260920_V1.md`
 
-Local self-run result:
-- 35 / 35 tests PASS
-- Q01-Q20: 20 / 20 executable and PASS
-- additional operator regressions: 5 / 5 PASS
-- preserved earlier core/case regressions: 10 / 10 PASS
+## Current verification ceiling
 
-This is implementation evidence only. It is not independent behavioral qualification.
+The live project evidence was read directly from GitHub and bound to exact commit/blob identities.
 
-## Preserved invariants
+New adapter/multi-subject/reporting source has been syntax-checked and regression cases prepared.
 
-1. Preserve literal proposition, referent, scope, type, and subject.
-2. Evidence origin is not evidence fidelity.
-3. Fidelity is not currentness.
-4. Currentness is not newest-record time.
-5. Repetition and correlated consensus are not independence.
-6. Historical evidence remains history after correction/supersession.
-7. Source/build/test/delivery/install/active/effect/qualified remain distinct.
-8. Capability, assignment, authority, intent, attempt, receipt, and verified effect remain distinct.
-9. Assistant/model output does not independently confirm itself.
-10. Relationship/status/urgency/confidence signals cannot change a protected evidence verdict.
-11. Valid correction is accepted; unsupported pressure is resisted.
-12. Ambiguous consequential effects are inspected before retry.
-13. Project adapters cannot weaken Voss core evidence rules.
-14. Optional ecosystem systems do not become mandatory runtime dependencies.
-15. UNRESOLVED is preferable to unsupported closure.
-16. A negative or non-identifiable result is preserved rather than tuned away after holdout.
-
-## Completed revival evidence
-
-Astrology analyst freeze:
-`d8660dc63e4813f37ed1722a2e867ee2c10b1a49`
-
-Astrology held-out result:
-`fe2f309539246d52ec24b83949f603d855657a1d`
-
-Portfolio architecture commit:
-`4c069ef64961d3b258ed31caa40ee4a67d567669`
+This pass must not be called independent qualification.
 
 ## Next frontier
 
-1. Bind a real GitHub/project evidence adapter to these provider-independent repository primitives.
-2. Create durable cross-domain Voss cases from several unrelated portfolio projects.
-3. Exercise provenance, software/runtime, scientific, security/authority, data/migration, and documentation/currentness domains.
-4. Convert failures into regression fixtures without tuning an independent holdout.
-5. Freeze a Voss candidate and hand it to an independent evaluator on unseen cases.
-6. Only after independent qualification consider a merge proposal.
+1. Commit this real-project corpus and repairs.
+2. Verify exact readback.
+3. Freeze that exact candidate commit.
+4. Create a holdout/evaluator packet that does not contain expected verdicts.
+5. Do not modify the frozen candidate while evaluating it.
+6. Use a genuinely separate evaluator runtime/person before claiming independent behavioral qualification.
+7. Convert independent failures into a new post-freeze development candidate, never by editing the evaluated candidate.
 
-No merge, deployment, provider mutation, or private-source publication is authorized by this state file.
+No merge to `main`, deployment, provider mutation, or private-source publication is authorized.

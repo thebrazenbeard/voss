@@ -1,0 +1,99 @@
+{
+  "schema": "VOSS_REAL_PROJECT_CASE_V1",
+  "case_id": "RP05_ON_THEO_BRANCH_DATA_STATE",
+  "domain": "migration_data_state",
+  "audit_date": "2026-09-20",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "subjects": [
+    {
+      "id": "ontheo-main",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/on-theo@main",
+      "immutable_ref": "eedbcf660c2cfe6cff5636e798806b0cd3d56efc",
+      "mutable": true
+    },
+    {
+      "id": "ontheo-astrology",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/on-theo@astrology",
+      "immutable_ref": "9aec3ff6e323a5b551bcf8fdef6bbbc38e7c0bf3",
+      "mutable": true
+    },
+    {
+      "id": "ontheo-voss-result",
+      "kind": "FILE_BLOB",
+      "locator": "experiments/astrology/VOSS_BASELINE_RESULT_V1.md",
+      "immutable_ref": "873c96730eabf2e58f5d7bc3127346d22ebfcb90",
+      "mutable": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "kind": "GITHUB_COMPARE",
+      "source_ref": "on-theo main...astrology",
+      "immutable_ref": "eedbcf660c2cfe6cff5636e798806b0cd3d56efc...9aec3ff6e323a5b551bcf8fdef6bbbc38e7c0bf3",
+      "summary": "astrology is ahead of main by 9 commits and behind by 0; astrology research and experiment files are added relative to main"
+    },
+    {
+      "id": "o2",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/on-theo@9aec3ff6e323a5b551bcf8fdef6bbbc38e7c0bf3/experiments/astrology/VOSS_BASELINE_RESULT_V1.md",
+      "immutable_ref": "git-blob:873c96730eabf2e58f5d7bc3127346d22ebfcb90",
+      "summary": "Voss astrology baseline result exists on astrology branch"
+    },
+    {
+      "id": "o3",
+      "kind": "GITHUB_ABSENCE",
+      "source_ref": "github://thebrazenbeard/on-theo@eedbcf660c2cfe6cff5636e798806b0cd3d56efc/experiments/astrology/VOSS_BASELINE_RESULT_V1.md",
+      "immutable_ref": "HTTP404@2026-09-20",
+      "summary": "exact file lookup on main returned 404 Not Found"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "proposition": "The Voss astrology baseline result is present on on-theo main at the audited frontier.",
+      "subject_ids": [
+        "ontheo-main",
+        "ontheo-voss-result"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o3"
+      ],
+      "rationale": "Exact file lookup on main returned Not Found.",
+      "claim_ceiling": "File-presence claim at the audited main head only."
+    },
+    {
+      "id": "c2",
+      "proposition": "The astrology branch has already been promoted or merged into on-theo main at the audited frontier.",
+      "subject_ids": [
+        "ontheo-main",
+        "ontheo-astrology"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o1"
+      ],
+      "rationale": "The exact comparison reports astrology 9 commits ahead of main and 0 behind, with astrology files still branch-only.",
+      "claim_ceiling": "Git branch-state finding; says nothing about future merge intent."
+    },
+    {
+      "id": "c3",
+      "proposition": "The Voss astrology baseline result exists on the astrology branch.",
+      "subject_ids": [
+        "ontheo-astrology",
+        "ontheo-voss-result"
+      ],
+      "verdict": "PASS",
+      "evidence_ids": [
+        "o2"
+      ],
+      "rationale": "Exact branch-bound file read returned the expected blob.",
+      "claim_ceiling": "Source/file existence only."
+    }
+  ],
+  "limitations": []
+}

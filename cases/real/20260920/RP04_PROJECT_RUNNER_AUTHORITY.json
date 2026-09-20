@@ -1,0 +1,75 @@
+{
+  "schema": "VOSS_REAL_PROJECT_CASE_V1",
+  "case_id": "RP04_PROJECT_RUNNER_AUTHORITY",
+  "domain": "security_authority",
+  "audit_date": "2026-09-20",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "subjects": [
+    {
+      "id": "runner-main",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/project-runner@main",
+      "immutable_ref": "bc05812b560b4fcde3a362e72fba04c626cafac8",
+      "mutable": true
+    },
+    {
+      "id": "runner-contract",
+      "kind": "FILE_BLOB",
+      "locator": "PROJECT_RUNNER.md",
+      "immutable_ref": "bb9b1ea0a729ab1ac2eb655bd8cf8627f7fa8ee3",
+      "mutable": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/project-runner@bc05812b560b4fcde3a362e72fba04c626cafac8/PROJECT_RUNNER.md",
+      "immutable_ref": "git-blob:bb9b1ea0a729ab1ac2eb655bd8cf8627f7fa8ee3",
+      "summary": "operating contract separates technical GitHub capability from downstream authority and requires exact target grant, preconditions, and post-write readback"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "proposition": "Possessing broad GitHub execution capability grants Project Runner standing mutation authority over downstream repositories.",
+      "subject_ids": [
+        "runner-contract"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o1"
+      ],
+      "rationale": "The exact operating contract states technical capability and target authority are distinct and broad token permissions are insufficient.",
+      "claim_ceiling": "Contract/governance finding; does not prove runtime enforcement."
+    },
+    {
+      "id": "c2",
+      "proposition": "Project Runner source contract requires an explicit target grant, scope match, mutable-state preconditions, and post-write readback for GitHub mutation.",
+      "subject_ids": [
+        "runner-contract"
+      ],
+      "verdict": "PASS",
+      "evidence_ids": [
+        "o1"
+      ],
+      "rationale": "Those requirements are explicitly listed in the M5 GitHub execution boundary.",
+      "claim_ceiling": "Source contract only."
+    },
+    {
+      "id": "c3",
+      "proposition": "Project Runner's read-only CI smoke test is mutation authority.",
+      "subject_ids": [
+        "runner-contract"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o1"
+      ],
+      "rationale": "The contract explicitly classifies the smoke test as connectivity/currentness evidence, not downstream mutation authority.",
+      "claim_ceiling": "CI semantic classification only."
+    }
+  ],
+  "limitations": []
+}

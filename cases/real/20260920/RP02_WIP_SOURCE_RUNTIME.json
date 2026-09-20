@@ -1,0 +1,81 @@
+{
+  "schema": "VOSS_REAL_PROJECT_CASE_V1",
+  "case_id": "RP02_WIP_SOURCE_RUNTIME",
+  "domain": "software_runtime",
+  "audit_date": "2026-09-20",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "subjects": [
+    {
+      "id": "wip-main",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/wip@main",
+      "immutable_ref": "12a7c23dbe0482fd7bfe63659e54526778efef1e",
+      "mutable": true
+    },
+    {
+      "id": "wip-protocol",
+      "kind": "FILE_BLOB",
+      "locator": "protocol/WIP_PROTOCOL.md",
+      "immutable_ref": "980814ff15addc47f7d6b413ff80815f305eff47",
+      "mutable": false
+    },
+    {
+      "id": "wip-effect",
+      "kind": "FILE_BLOB",
+      "locator": "protocol/EFFECT_PROTOCOL.md",
+      "immutable_ref": "1db3bda8f10d0d6b9eb473a3e7675d47dacfe96a",
+      "mutable": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/wip@12a7c23dbe0482fd7bfe63659e54526778efef1e/protocol/WIP_PROTOCOL.md",
+      "immutable_ref": "git-blob:980814ff15addc47f7d6b413ff80815f305eff47",
+      "summary": "source protocol defines PREPARED/ATTEMPTED and requires target inspection/readback before VERIFIED or retry"
+    },
+    {
+      "id": "o2",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/wip@12a7c23dbe0482fd7bfe63659e54526778efef1e/protocol/EFFECT_PROTOCOL.md",
+      "immutable_ref": "git-blob:1db3bda8f10d0d6b9eb473a3e7675d47dacfe96a",
+      "summary": "VERIFIED requires receipt material that distinguishes the intended effect from a merely successful tool response"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "proposition": "WIP source contract requires target readback before a consequential external effect is treated as VERIFIED when readback is reasonably available.",
+      "subject_ids": [
+        "wip-protocol",
+        "wip-effect"
+      ],
+      "verdict": "PASS",
+      "evidence_ids": [
+        "o1",
+        "o2"
+      ],
+      "rationale": "Both protocol files explicitly require target inspection/readback and separate successful tool response from verified effect.",
+      "claim_ceiling": "Establishes source contract semantics, not that a worker/runtime obeyed them."
+    },
+    {
+      "id": "c2",
+      "proposition": "The audited GitHub source establishes that a WIP-managed external effect is currently active in a live runtime.",
+      "subject_ids": [
+        "wip-main"
+      ],
+      "verdict": "UNRESOLVED",
+      "evidence_ids": [
+        "o1",
+        "o2"
+      ],
+      "rationale": "Repository source describes required behavior but supplies no direct runtime/effect readback for a specific live operation in this audit.",
+      "claim_ceiling": "Runtime/effect state remains unproven from source alone."
+    }
+  ],
+  "limitations": [
+    "No live WIP runtime/provider effect was queried; the case intentionally tests source-vs-runtime separation."
+  ]
+}
