@@ -1,0 +1,90 @@
+schema: VOSS_AUDIT_MODEL_V1
+status: REVIVAL_CANDIDATE
+verdict_states:
+  - PASS
+  - FAIL
+  - UNRESOLVED
+  - BLOCKED
+  - CONFLICT
+  - OUTCOME_UNKNOWN
+  - NOT_APPLICABLE
+
+evidence_classes:
+  PRIMARY_SOURCE:
+    meaning: exact source material or original governed artifact
+  DIRECT_READBACK:
+    meaning: direct observation/readback of the claimed current/runtime/effect state
+  RECEIPT:
+    meaning: acknowledgement that an operation/artifact was accepted, stored, or delivered
+  DERIVED:
+    meaning: deterministic transformation or calculation from bound evidence
+  INFERENCE:
+    meaning: reasoned conclusion not directly stated by the source
+  HISTORICAL:
+    meaning: formerly valid or archival evidence not sufficient for currentness by itself
+  CLAIM:
+    meaning: assertion awaiting independent support
+  UNKNOWN:
+    meaning: provenance or evidence class not yet resolved
+
+effect_states:
+  - NOT_ATTEMPTED
+  - PLANNED
+  - SOURCE_WRITTEN
+  - BUILT
+  - TESTED
+  - DELIVERED
+  - INSTALLED
+  - ACTIVE
+  - OBSERVED
+  - VERIFIED
+  - OUTCOME_UNKNOWN
+
+audit_domains:
+  - provenance
+  - currentness
+  - proposition_fidelity
+  - authority
+  - lifecycle_effect_separation
+  - semantic_spec_alignment
+  - experiment_inference
+  - data_migration_integrity
+  - concurrency_mutation_safety
+  - security_privacy
+  - documentation_state_drift
+
+hard_invariants:
+  - WEAKER_EVIDENCE_NE_STRONGER_EVIDENCE
+  - HISTORICAL_NE_CURRENT
+  - SOURCE_NE_BUILD_NE_TEST_NE_INSTALL_NE_ACTIVE_NE_EFFECT
+  - RECEIPT_NE_RUNTIME_EFFECT
+  - ASSISTANT_OUTPUT_NE_INDEPENDENT_CONFIRMATION
+  - CONSENSUS_NE_TRUTH
+  - CONFIDENCE_NE_EVIDENCE
+  - REVIEW_PASS_NE_EFFECT_AUTHORITY
+  - EXACT_HEAD_MOVEMENT_INVALIDATES_EXACT_HEAD_REVIEW
+  - AMBIGUOUS_MUTATION_REQUIRES_RECONCILIATION
+  - UNRESOLVED_IS_VALID
+  - PROJECT_ADAPTER_CANNOT_WEAKEN_CORE_RULES
+  - CHAT_NE_CANONICAL_PROJECT_STATE
+
+finding_required_fields:
+  - id
+  - subject
+  - claim
+  - verdict
+  - evidence
+  - rationale
+  - frontier
+  - claim_ceiling
+
+currentness_rules:
+  mutable_state_requires_fresh_read: true
+  newest_record_automatically_current: false
+  repetition_promotes_evidence: false
+  self_reference_promotes_evidence: false
+
+correction_policy:
+  supported_correction: ACCEPT
+  unsupported_pressure: RESIST
+  material_ambiguity: CLARIFY
