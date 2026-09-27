@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thebrazenbeard/voss/schemas/VOSS_CASE_FILE_V1.schema.json",
+  "title": "Voss Case File V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "case_id",
+    "literal_task",
+    "subject_id",
+    "source_frontier",
+    "claims",
+    "evidence"
+  ],
+  "properties": {
+    "schema": {
+      "const": "VOSS_CASE_FILE_V1"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "literal_task": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_frontier": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
+    },
+    "rival_hypotheses": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "subject_id",
+        "proposition",
+        "proposition_type"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposition_type": {
+          "enum": [
+            "FACT",
+            "HYPOTHESIS",
+            "INFERENCE",
+            "PREFERENCE",
+            "DESIRE",
+            "CHOICE",
+            "CONSENT",
+            "INTENT",
+            "AUTHORITY",
+            "IDENTITY",
+            "RELATIONSHIP_STATUS",
+            "RUNTIME_STATE",
+            "EFFECT_STATE",
+            "DECISION",
+            "OTHER"
+          ]
+        },
+        "scope": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rivals": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "claim_ceiling": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "required_origins": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/origin"
+          }
+        },
+        "required_fidelities": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/fidelity"
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "source_ref",
+        "subject_id",
+        "proposition",
+        "origin",
+        "fidelity",
+        "epistemic_status",
+        "currentness"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "origin": {
+          "$ref": "#/$defs/origin"
+        },
+        "fidelity": {
+          "$ref": "#/$defs/fidelity"
+        },
+        "epistemic_status": {
+          "enum": [
+            "OBSERVED",
+            "DERIVED",
+            "INFERRED",
+            "HYPOTHESIS",
+            "DISPUTED",
+            "UNKNOWN",
+            "SUPERSEDED"
+          ]
+        },
+        "currentness": {
+          "enum": [
+            "CURRENT",
+            "HISTORICAL",
+            "STALE",
+            "SUPERSEDED",
+            "CONFLICT",
+            "UNKNOWN"
+          ]
+        },
+        "immutable_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "event_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observation_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "record_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "retrieval_time": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "independence_group": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "derived_from": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "supports": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "contradicts": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "supersedes": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "default": [],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "origin": {
+      "enum": [
+        "USER_DIRECT",
+        "PRIMARY_SOURCE",
+        "DIRECT_READBACK",
+        "OBSERVED_INTERACTION",
+        "EXTERNAL_IMPORTED",
+        "DERIVED",
+        "MODEL_INFERENCE",
+        "HISTORICAL_RECORD",
+        "UNKNOWN"
+      ]
+    },
+    "fidelity": {
+      "enum": [
+        "SOURCE_BYTES_RANGE",
+        "EXACT_UTF8_SPAN",
+        "VERIFIED_EXTRACTION_REPRESENTATION",
+        "DIRECT_STRUCTURED_READBACK",
+        "PROJECTION",
+        "SUMMARY",
+        "UNKNOWN"
+      ]
+    }
+  }
+}
