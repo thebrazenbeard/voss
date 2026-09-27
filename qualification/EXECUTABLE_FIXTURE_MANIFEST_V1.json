@@ -1,0 +1,108 @@
+{
+  "schema": "VOSS_EXECUTABLE_FIXTURE_MANIFEST_V1",
+  "status": "SELF_RUN_IMPLEMENTATION_EVIDENCE",
+  "source_plan": "qualification/VOSS_GENERAL_QUALIFICATION_V1.md",
+  "executable_test": "tests/test_qualification_v1.py",
+  "fixtures": [
+    {
+      "id": "Q01",
+      "name": "SOURCE_VS_RUNTIME",
+      "operator": "case/evidence_satisfies_claim"
+    },
+    {
+      "id": "Q02",
+      "name": "RECEIPT_VS_EFFECT",
+      "operator": "case/evidence_satisfies_claim"
+    },
+    {
+      "id": "Q03",
+      "name": "STALE_CURRENTNESS",
+      "operator": "currentness/resolve_currentness"
+    },
+    {
+      "id": "Q04",
+      "name": "NEWEST_WINS_TRAP",
+      "operator": "currentness/resolve_currentness"
+    },
+    {
+      "id": "Q05",
+      "name": "VALID_CORRECTION",
+      "operator": "currentness/resolve_currentness"
+    },
+    {
+      "id": "Q06",
+      "name": "INVALID_PRESSURE",
+      "operator": "influence/InfluenceFirewall"
+    },
+    {
+      "id": "Q07",
+      "name": "PROPOSITION_FIDELITY",
+      "operator": "case/evidence_satisfies_claim"
+    },
+    {
+      "id": "Q08",
+      "name": "SELF_CONFIRMATION",
+      "operator": "case/independent_support_count"
+    },
+    {
+      "id": "Q09",
+      "name": "CONSENSUS_TRAP",
+      "operator": "case/independent_support_count"
+    },
+    {
+      "id": "Q10",
+      "name": "EXACT_HEAD_MOVEMENT",
+      "operator": "repository/check_review_freshness"
+    },
+    {
+      "id": "Q11",
+      "name": "AMBIGUOUS_MUTATION",
+      "operator": "effects/reconcile_operation"
+    },
+    {
+      "id": "Q12",
+      "name": "AUTHORITY_DRIFT",
+      "operator": "authority/effect_authorized"
+    },
+    {
+      "id": "Q13",
+      "name": "SECURITY_BOUNDARY",
+      "operator": "authority/effect_authorized"
+    },
+    {
+      "id": "Q14",
+      "name": "PRIVACY_RELEVANCE",
+      "operator": "privacy/admissible_for_case"
+    },
+    {
+      "id": "Q15",
+      "name": "EXPERIMENT_LEAKAGE",
+      "operator": "experiments/evaluate_protocol"
+    },
+    {
+      "id": "Q16",
+      "name": "POST_HOC_RESCUE",
+      "operator": "experiments/evaluate_protocol"
+    },
+    {
+      "id": "Q17",
+      "name": "MIGRATION_STATE",
+      "operator": "case/evidence_satisfies_claim"
+    },
+    {
+      "id": "Q18",
+      "name": "CONCURRENCY_STALE_WRITE",
+      "operator": "repository/mutation_gate"
+    },
+    {
+      "id": "Q19",
+      "name": "DOCUMENTATION_DRIFT",
+      "operator": "currentness/resolve_currentness"
+    },
+    {
+      "id": "Q20",
+      "name": "UNRESOLVED_DISCIPLINE",
+      "operator": "rivals/resolve_rivals"
+    }
+  ]
+}

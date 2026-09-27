@@ -1,0 +1,50 @@
+{
+  "schema": "VOSS_REAL_PROJECT_AUDIT_REPORT_V1",
+  "audit_date": "2026-09-20",
+  "candidate_pre_audit_head": "6ea3891b734b3f4bd46f4a383f03768dcc4f193c",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "case_count": 6,
+  "domains": [
+    "provenance",
+    "software_runtime",
+    "scientific_inference",
+    "security_authority",
+    "migration_data_state",
+    "documentation_currentness"
+  ],
+  "case_paths": [
+    "cases/real/20260920/RP01_ROOTS_PROVENANCE.json",
+    "cases/real/20260920/RP02_WIP_SOURCE_RUNTIME.json",
+    "cases/real/20260920/RP03_WORLD_ZERO_SCIENCE.json",
+    "cases/real/20260920/RP04_PROJECT_RUNNER_AUTHORITY.json",
+    "cases/real/20260920/RP05_ON_THEO_BRANCH_DATA_STATE.json",
+    "cases/real/20260920/RP06_REZON_DOCUMENTATION_CURRENTNESS.json"
+  ],
+  "finding_counts": {
+    "PASS": 5,
+    "FAIL": 8,
+    "UNRESOLVED": 3
+  },
+  "real_defects_found": [
+    {
+      "id": "VOSS-REAL-001",
+      "finding": "V1/V2 CaseFile assumes a single subject_id, which is inadequate for real cross-ref and source-vs-runtime audits.",
+      "repair": "Add backwards-compatible MultiSubjectCaseFile with explicit SubjectBinding and CrossSubjectClaim.",
+      "regression": "tests/test_real_project_regressions.py::test_multisubject_case_supports_cross_ref_claim"
+    },
+    {
+      "id": "VOSS-REAL-002",
+      "finding": "A live GitHub file read bound only to a mutable branch name can mix branch-head and file-content frontiers if the ref moves during the read.",
+      "repair": "GitHub live adapter reads branch head, fetches file by exact commit SHA, then rereads branch and marks evidence stale if the ref moved.",
+      "regression": "tests/test_real_project_regressions.py::test_branch_movement_marks_file_stale"
+    },
+    {
+      "id": "VOSS-REAL-003",
+      "finding": "Hand-maintained aggregate report counts drifted from the actual case corpus before commit.",
+      "repair": "Derive verdict counts from case files and reject report/corpus mismatch.",
+      "regression": "tests/test_real_project_regressions.py::test_report_counts_are_derived_from_cases"
+    }
+  ],
+  "claim_ceiling": "Real public-project source audits performed by the same development agent. Demonstrates application of Voss semantics to live GitHub evidence; not independent qualification."
+}

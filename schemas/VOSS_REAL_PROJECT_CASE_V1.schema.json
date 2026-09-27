@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/thebrazenbeard/voss/schemas/VOSS_REAL_PROJECT_CASE_V1.schema.json",
+  "title": "Voss Real Project Case V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "case_id",
+    "domain",
+    "audit_date",
+    "execution_class",
+    "independent",
+    "subjects",
+    "observations",
+    "claims",
+    "limitations"
+  ],
+  "properties": {
+    "schema": {
+      "const": "VOSS_REAL_PROJECT_CASE_V1"
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "enum": [
+        "provenance",
+        "software_runtime",
+        "scientific_inference",
+        "security_authority",
+        "migration_data_state",
+        "documentation_currentness"
+      ]
+    },
+    "audit_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "execution_class": {
+      "const": "SELF_RUN_REAL_PROJECT_AUDIT"
+    },
+    "independent": {
+      "const": false
+    },
+    "subjects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/subject"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/observation"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/claim"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "$defs": {
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "locator",
+        "immutable_ref",
+        "mutable"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "REPOSITORY_REF",
+            "FILE_BLOB",
+            "RUNTIME",
+            "DATASET",
+            "PROVIDER_STATE",
+            "OTHER"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "immutable_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mutable": {
+          "type": "boolean"
+        }
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "source_ref",
+        "immutable_ref",
+        "summary"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "immutable_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "summary": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "proposition",
+        "subject_ids",
+        "verdict",
+        "evidence_ids",
+        "rationale",
+        "claim_ceiling"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "verdict": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNRESOLVED",
+            "BLOCKED",
+            "CONFLICT",
+            "OUTCOME_UNKNOWN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_ceiling": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "VOSS_REAL_PROJECT_CASE_V1",
+  "case_id": "RP01_ROOTS_PROVENANCE",
+  "domain": "provenance",
+  "audit_date": "2026-09-20",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "subjects": [
+    {
+      "id": "roots-main",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/roots@main",
+      "immutable_ref": "7fab72635f319c633b480174c8a0687901ac1db2",
+      "mutable": true
+    },
+    {
+      "id": "roots-methodology-branch",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/roots@one/roots-origin-conflict-claim-v1-20260918",
+      "immutable_ref": "e47a58e59fb33ffbda5d36d85a2b49fbbf6c9b61",
+      "mutable": true
+    },
+    {
+      "id": "roots-methodology-file",
+      "kind": "FILE_BLOB",
+      "locator": "docs/methodology.md",
+      "immutable_ref": "1593636da46356a124f5b76677e373f6d4b08e79",
+      "mutable": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "kind": "GITHUB_COMPARE",
+      "source_ref": "roots main...methodology branch",
+      "immutable_ref": "7fab72635f319c633b480174c8a0687901ac1db2...e47a58e59fb33ffbda5d36d85a2b49fbbf6c9b61",
+      "summary": "supplemental branch is 34 commits ahead and 0 behind; docs/methodology.md is added there"
+    },
+    {
+      "id": "o2",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/roots@e47a58e59fb33ffbda5d36d85a2b49fbbf6c9b61/docs/methodology.md",
+      "immutable_ref": "git-blob:1593636da46356a124f5b76677e373f6d4b08e79",
+      "summary": "methodology requires resolving backward references, rebuilding chronology, and restarting interpretation from oldest accessible evidence when earlier material appears"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "proposition": "Roots methodology requires chronology rebuild/restart when a later record reveals earlier source evidence.",
+      "subject_ids": [
+        "roots-methodology-file"
+      ],
+      "verdict": "PASS",
+      "evidence_ids": [
+        "o2"
+      ],
+      "rationale": "The exact methodology file explicitly requires adding the newly found source, rebuilding chronology, and restarting interpretation from the oldest accessible evidence.",
+      "claim_ceiling": "Methodology contract only; does not prove the provenance of any specific historical target."
+    },
+    {
+      "id": "c2",
+      "proposition": "Roots treats earliest accessible evidence as automatically equal to proven origin.",
+      "subject_ids": [
+        "roots-methodology-file"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o2"
+      ],
+      "rationale": "The methodology explicitly separates earliest accessible evidence, first literal occurrence, conceptual ancestor, origin claim, and proven origin.",
+      "claim_ceiling": "Failure is limited to the methodology proposition."
+    }
+  ],
+  "limitations": []
+}

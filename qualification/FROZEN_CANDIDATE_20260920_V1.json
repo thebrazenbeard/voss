@@ -1,0 +1,44 @@
+{
+  "schema": "VOSS_FROZEN_CANDIDATE_V1",
+  "freeze_date": "2026-09-20",
+  "candidate": {
+    "repository": "thebrazenbeard/voss",
+    "branch": "revival/voss-forensic-analyst-v2-20260920",
+    "commit": "4d964da8d8884e8df63e4382433f9290de5a42a8",
+    "tree": "c6d284904a227a1f4103e4894816919ef53257af"
+  },
+  "status": "FROZEN_AWAITING_INDEPENDENT_EVALUATION",
+  "immutable_rule": "Any candidate code, architecture, tests, cases, thresholds, or evaluator-facing semantics changed after this freeze creates a new candidate and requires a new holdout evaluation.",
+  "development_evidence": [
+    {
+      "kind": "SELF_RUN_DETERMINISTIC_QUALIFICATION",
+      "ref": "qualification/SELF_RUN_RECEIPT_20260920_V1.json",
+      "result": "35_OF_35_PASS",
+      "independent": false
+    },
+    {
+      "kind": "REAL_PROJECT_GENERALIZATION",
+      "ref": "qualification/REAL_PROJECT_AUDIT_REPORT_20260920_V1.json",
+      "projects": 6,
+      "findings": {
+        "PASS": 5,
+        "FAIL": 8,
+        "UNRESOLVED": 3
+      },
+      "independent": false
+    },
+    {
+      "kind": "ASTROLOGY_BLIND_ANALYST",
+      "ref": "results/astrology-blind-v1/report.json",
+      "independent": false,
+      "note": "Earlier domain-specific qualification artifact retained as evidence, not the general independent holdout."
+    }
+  ],
+  "real_project_defects_repaired": [
+    "VOSS-REAL-001_MULTI_SUBJECT_CASES",
+    "VOSS-REAL-002_MUTABLE_REF_READ_RACE",
+    "VOSS-REAL-003_REPORT_CORPUS_COUNT_DRIFT"
+  ],
+  "evaluation_status": "WAITING_INDEPENDENT_EVALUATOR",
+  "claim_ceiling": "Freeze establishes the exact candidate to be evaluated. It does not itself establish independent qualification, merge readiness, deployment, installation, or runtime activation."
+}

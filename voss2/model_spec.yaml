@@ -1,0 +1,56 @@
+schema: VOSS_FORENSIC_ANALYST_V2_SPEC
+status: FROZEN_BEFORE_HELDOUT_EVALUATION
+source:
+  on_theo_repo: thebrazenbeard/on-theo
+  on_theo_branch: astrology
+  on_theo_head: e608ed75fe0fe669f20a1c1d49b9c6d1a6f2c4b0
+worlds:
+  - S0_NULL
+  - S1_PHYSICAL
+  - S2_NATAL_SEED
+  - S3_RUNTIME
+  - S4_PLASTICITY
+  - S5_COMMON_CAUSE
+  - S6_CULTURAL_ONLY
+  - S7_WEAK_SIGNAL_CULTURAL
+data:
+  agents: 200
+  steps: 360
+calibration:
+  per_class: 20
+  base_seed: 10000
+  class_stride: 1000
+  seed_offsets: [0, 19]
+heldout:
+  per_class: 25
+  base_seed: 30000
+  class_stride: 1000
+  seed_offsets: [0, 24]
+classifier:
+  type: ExtraTreesClassifier
+  n_estimators: 1200
+  min_samples_leaf: 2
+  max_features: 0.8
+  random_state: 77
+  class_weight: balanced
+confidence_policy:
+  strong_temporal:
+    classes: [S1_PHYSICAL, S3_RUNTIME, S5_COMMON_CAUSE]
+    min_probability: 0.55
+  cultural:
+    classes: [S6_CULTURAL_ONLY, S7_WEAK_SIGNAL_CULTURAL]
+    min_probability: 0.58
+    min_margin: 0.18
+  hard_latent:
+    classes: [S0_NULL, S2_NATAL_SEED, S4_PLASTICITY]
+    min_probability: 0.68
+    min_margin: 0.22
+  fallback: UNRESOLVED
+guards:
+  - HELDOUT_LABEL_NE_ANALYST_INPUT
+  - CALIBRATION_LABEL_NE_HELDOUT_LABEL
+  - PUBLIC_FEATURE_NE_LATENT_STATE
+  - FORCED_CHOICE_NE_EVIDENCE_GATED_VERDICT
+  - UNRESOLVED_IS_VALID
+  - CALIBRATION_TUNING_MUST_PRECEDE_HELDOUT_EVALUATION
+  - SYNTHETIC_IDENTIFIABILITY_NE_REAL_WORLD_VALIDATION
