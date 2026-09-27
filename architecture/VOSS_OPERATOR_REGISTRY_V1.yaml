@@ -1,0 +1,51 @@
+schema: VOSS_OPERATOR_REGISTRY_V1
+status: PORTFOLIO_SYNTHESIZED
+operators:
+  - id: LITERALIZE
+    purpose: Preserve the exact proposition, referent, type, scope, qualifiers, and requested ceiling.
+  - id: SUBJECT_BIND
+    purpose: Bind the case to the exact subject, revision, population, environment, or runtime frontier.
+  - id: PROVENANCE_TRACE
+    purpose: Reconstruct origin/derivation oldest-first with restart on newly discovered earlier evidence.
+  - id: EVIDENCE_NORMALIZE
+    purpose: Normalize origin, fidelity, epistemic status, time axes, currentness, lineage, and limitations.
+  - id: CURRENTNESS_RESOLVE
+    purpose: Resolve present state from authoritative evidence and supersession/conflict rules, never newest-wins alone.
+  - id: SEMANTIC_CHECK
+    purpose: Detect proposition substitution, scope drift, relation reversal, and representation/reality confusion.
+  - id: DEDUCTIVE_CHECK
+    purpose: Test whether the conclusion follows from admitted premises without validating the premises themselves.
+  - id: QUANTITATIVE_CHECK
+    purpose: Perform numerical/statistical checks with units, assumptions, uncertainty, and reproducibility.
+  - id: CAUSAL_COMPARE
+    purpose: Compare rival causal explanations and identify confounders/mediators/interventions.
+  - id: COUNTERFACTUAL_TEST
+    purpose: Evaluate discriminating alternate-world/intervention consequences under an explicit model.
+  - id: ERROR_LOCALIZE
+    purpose: Separate symptom, proximate mechanism, root cause, correction, and regression proof.
+  - id: AUTHORITY_CHECK
+    purpose: Separate capability, assignment, role, intent, and exact protected-effect authority.
+  - id: SECURITY_REVIEW
+    purpose: Test trust boundaries, escalation, injection, credential, permission, and unsafe-default paths.
+  - id: PRIVACY_REVIEW
+    purpose: Check relevance, disclosure, propagation, minimization, and public/private boundaries.
+  - id: ADVERSARIAL_REVIEW
+    purpose: Attack the literal proposition without silently substituting another one.
+  - id: INDEPENDENCE_CHECK
+    purpose: Detect copied/correlated evidence and reviewers before treating agreement as corroboration.
+  - id: EFFECT_RECONCILE
+    purpose: Reconcile ambiguous mutation outcomes against exact targets before retry.
+  - id: DRIFT_CHECK
+    purpose: Compare current behavior/state against a bound baseline without treating similarity as authority.
+  - id: COMPLETION_GATE
+    purpose: Verify stated acceptance criteria without inventing new perfection gates or promoting lifecycle state.
+  - id: INTEGRATE
+    purpose: Reconcile operator outputs, conflicts, rivals, uncertainty causes, and claim ceilings.
+  - id: RECEIPT
+    purpose: Emit a durable result binding subject, frontier, evidence, verdict, ceiling, unresolved state, and independence.
+selection_rules:
+  - "Operator diversity is preferred only when it adds distinct failure detection."
+  - "More workers are not automatically more independent."
+  - "Deterministic checks are preferred when they can decide the proposition."
+  - "Opposition is invoked for material claims, not as a permanent personality."
+  - "Continue reasoning only when another step has plausible information value."

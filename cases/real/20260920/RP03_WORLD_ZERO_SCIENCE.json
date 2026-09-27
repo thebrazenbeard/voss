@@ -1,0 +1,93 @@
+{
+  "schema": "VOSS_REAL_PROJECT_CASE_V1",
+  "case_id": "RP03_WORLD_ZERO_SCIENCE",
+  "domain": "scientific_inference",
+  "audit_date": "2026-09-20",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "subjects": [
+    {
+      "id": "wz-main",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/world-zero@main",
+      "immutable_ref": "5ab39621d090079d24de40261906b64413c6f995",
+      "mutable": true
+    },
+    {
+      "id": "wz-validation",
+      "kind": "FILE_BLOB",
+      "locator": "docs/research/VALIDATION_AND_FALSIFICATION_STRATEGY.md",
+      "immutable_ref": "cad826c460559e3f46193817d22c4e570a78907f",
+      "mutable": false
+    },
+    {
+      "id": "wz-benchmarks",
+      "kind": "FILE_BLOB",
+      "locator": "docs/research/PREDICTIVE_BENCHMARKS_V1.md",
+      "immutable_ref": "67a25c597157b3ee0f514c28f07bf9d849b51bdd",
+      "mutable": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/world-zero@5ab39621d090079d24de40261906b64413c6f995/docs/research/VALIDATION_AND_FALSIFICATION_STRATEGY.md",
+      "immutable_ref": "git-blob:cad826c460559e3f46193817d22c4e570a78907f",
+      "summary": "proposed framework requires claim-scoped validation and frozen partitions and forbids moving failed holdouts into calibration while retaining holdout language"
+    },
+    {
+      "id": "o2",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/world-zero@5ab39621d090079d24de40261906b64413c6f995/docs/research/PREDICTIVE_BENCHMARKS_V1.md",
+      "immutable_ref": "git-blob:67a25c597157b3ee0f514c28f07bf9d849b51bdd",
+      "summary": "benchmark contract separates predictive comparison from causal interpretation and requires frozen feature/partition choices"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "proposition": "World Zero methodology permits an unqualified WORLD_ZERO_VALIDATED claim.",
+      "subject_ids": [
+        "wz-validation"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o1"
+      ],
+      "rationale": "The validation strategy explicitly says never to state WORLD_ZERO_VALIDATED without a qualifier and separates multiple validation claims.",
+      "claim_ceiling": "Methodological policy finding; not a result about a specific model run."
+    },
+    {
+      "id": "c2",
+      "proposition": "World Zero methodology permits failed holdout data to be moved into calibration while continuing to call it holdout evidence.",
+      "subject_ids": [
+        "wz-validation"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o1"
+      ],
+      "rationale": "The frozen-partition section explicitly prohibits that practice.",
+      "claim_ceiling": "Methodological policy finding."
+    },
+    {
+      "id": "c3",
+      "proposition": "These audited methodology/benchmark documents by themselves establish real-world predictive validity of World Zero.",
+      "subject_ids": [
+        "wz-validation",
+        "wz-benchmarks"
+      ],
+      "verdict": "UNRESOLVED",
+      "evidence_ids": [
+        "o1",
+        "o2"
+      ],
+      "rationale": "The files are framework/contracts and define how validation should occur; they are not themselves a bound predictive-result receipt for a specific model, dataset, and holdout.",
+      "claim_ceiling": "No model-performance conclusion from framework source alone."
+    }
+  ],
+  "limitations": [
+    "No specific World Zero run receipt was selected as the subject of this case."
+  ]
+}
