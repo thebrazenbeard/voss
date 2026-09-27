@@ -1,0 +1,80 @@
+{
+  "schema": "VOSS_INDEPENDENT_HOLDOUT_MANIFEST_V1",
+  "sealed_date": "2026-09-20",
+  "candidate_commit": "4d964da8d8884e8df63e4382433f9290de5a42a8",
+  "candidate_tree": "c6d284904a227a1f4103e4894816919ef53257af",
+  "status": "SEALED_UNSCORED",
+  "expected_verdicts_present": false,
+  "answer_key_present": false,
+  "evaluator_must_construct_claims_from_bound_sources": true,
+  "contamination_statement": {
+    "repo_names_previously_seen_during_architecture_inventory": true,
+    "exact_holdout_claims_preselected_before_freeze": false,
+    "holdout_source_files_opened_for_this_evaluation_by_development_agent": false,
+    "qualification_class": "UNSEEN_EXACT_CASES_NOT_UNSEEN_REPOSITORY_NAMES",
+    "note": "Earlier portfolio mining means repository identity/theme is not novel. Independent value comes from an evaluator selecting exact subjects, sources, propositions, and verdicts after candidate freeze without a supplied answer key."
+  },
+  "subjects": [
+    {
+      "id": "H01_DISCOVERY",
+      "repository": "thebrazenbeard/discovery",
+      "branch": "main",
+      "exact_head": "96e6f8e9c776047f9068c897eab0406324187166",
+      "target_domain": "architecture_dependency_currentness"
+    },
+    {
+      "id": "H02_DRIFTGUARD",
+      "repository": "thebrazenbeard/driftguard",
+      "branch": "main",
+      "exact_head": "2772aff77929ef1310b8bcf0b5103c466c8c8010",
+      "target_domain": "drift_baseline_currentness"
+    },
+    {
+      "id": "H03_MOSAIC",
+      "repository": "thebrazenbeard/mosaic",
+      "branch": "main",
+      "exact_head": "a3115031ec716526532b32dc004303b4042e4a26",
+      "target_domain": "modularity_integration_claim_boundaries"
+    },
+    {
+      "id": "H04_TRANSCENDENCE",
+      "repository": "thebrazenbeard/transcendence",
+      "branch": "main",
+      "exact_head": "68e7a794d6134e8319121404f31062288dc8d6a3",
+      "target_domain": "semantic_architecture_state"
+    },
+    {
+      "id": "H05_TESTAMENT",
+      "repository": "thebrazenbeard/testament",
+      "branch": "main",
+      "exact_head": "76f70643484ff22684f535d376e10e72c4aefba9",
+      "target_domain": "provenance_claim_typing_cross_source"
+    },
+    {
+      "id": "H06_HC_BRAIN",
+      "repository": "thebrazenbeard/hc-brain",
+      "branch": "main",
+      "exact_head": "618245b54fb923c7a204892c6953ab6d1c5dac57",
+      "target_domain": "identity_state_effect_integration"
+    }
+  ],
+  "evaluator_requirements": {
+    "minimum_claims_per_repository": 2,
+    "minimum_total_claims": 12,
+    "require_at_least_one_adversarial_or_unresolved_eligible_claim_per_repository": true,
+    "bind_exact_file_blob_or_structured_readback_for_each_material_finding": true,
+    "preserve_pass_fail_unresolved_conflict_outcome_unknown_states": true,
+    "do_not_infer_currentness_from_recency_or_richness": true,
+    "do_not_infer_authority_from_capability_or_role": true,
+    "do_not_treat_source_as_runtime_effect": true,
+    "no_candidate_modification_during_evaluation": true,
+    "no_posthoc_expected_verdict_injection": true
+  },
+  "invalidation_conditions": [
+    "Candidate commit/tree changes.",
+    "A holdout subject is evaluated at a different repository head without recording a new holdout generation.",
+    "Development agent supplies expected verdicts or answer key before independent result is frozen.",
+    "Evaluator tunes candidate logic during evaluation.",
+    "Evaluator relies on mutable branch content without binding the exact holdout head or declaring the mismatch."
+  ]
+}
