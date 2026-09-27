@@ -1,0 +1,121 @@
+{
+  "schema": "VOSS_REAL_PROJECT_CASE_V1",
+  "case_id": "RP06_REZON_DOCUMENTATION_CURRENTNESS",
+  "domain": "documentation_currentness",
+  "audit_date": "2026-09-20",
+  "execution_class": "SELF_RUN_REAL_PROJECT_AUDIT",
+  "independent": false,
+  "subjects": [
+    {
+      "id": "rezon-main",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/rezon@main",
+      "immutable_ref": "e3d7a41eccb49a9f403ef66f511faef677ceec1b",
+      "mutable": true
+    },
+    {
+      "id": "rezon-r47",
+      "kind": "REPOSITORY_REF",
+      "locator": "thebrazenbeard/rezon@state/rezon-chat-continuation-r47-0ca0f128",
+      "immutable_ref": "12e1f4e98201081fd7d0394789046f2bf561bb64",
+      "mutable": true
+    },
+    {
+      "id": "rezon-main-readme",
+      "kind": "FILE_BLOB",
+      "locator": "README.md@main",
+      "immutable_ref": "e192b67735a93adde60589ffbf193b0058c5bbaa",
+      "mutable": false
+    },
+    {
+      "id": "rezon-foundation",
+      "kind": "FILE_BLOB",
+      "locator": "docs/FOUNDATION.md@r47",
+      "immutable_ref": "cdc3c9cbb89bc1661e784aafdc2839bab9dfeb40",
+      "mutable": false
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "kind": "GITHUB_DIRECTORY",
+      "source_ref": "github://thebrazenbeard/rezon@e3d7a41eccb49a9f403ef66f511faef677ceec1b/",
+      "immutable_ref": "tree-at-main:e3d7a41eccb49a9f403ef66f511faef677ceec1b",
+      "summary": "main root contains only README.md"
+    },
+    {
+      "id": "o2",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/rezon@e3d7a41eccb49a9f403ef66f511faef677ceec1b/README.md",
+      "immutable_ref": "git-blob:e192b67735a93adde60589ffbf193b0058c5bbaa",
+      "summary": "main README is only title plus 'Multi-faceted reasoning repo'"
+    },
+    {
+      "id": "o3",
+      "kind": "GITHUB_COMPARE",
+      "source_ref": "rezon main...r47",
+      "immutable_ref": "e3d7a41eccb49a9f403ef66f511faef677ceec1b...12e1f4e98201081fd7d0394789046f2bf561bb64",
+      "summary": "r47 is 278 commits ahead of main and 0 behind, adding extensive docs, source, state, and tests"
+    },
+    {
+      "id": "o4",
+      "kind": "GITHUB_FILE",
+      "source_ref": "github://thebrazenbeard/rezon@12e1f4e98201081fd7d0394789046f2bf561bb64/docs/FOUNDATION.md",
+      "immutable_ref": "git-blob:cdc3c9cbb89bc1661e784aafdc2839bab9dfeb40",
+      "summary": "supplemental branch contains detailed foundation and candidate runtime spine"
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1",
+      "proposition": "Rezon main alone is sufficient to reconstruct the implemented or researched Rezon architecture visible in the repository portfolio.",
+      "subject_ids": [
+        "rezon-main",
+        "rezon-r47"
+      ],
+      "verdict": "FAIL",
+      "evidence_ids": [
+        "o1",
+        "o2",
+        "o3",
+        "o4"
+      ],
+      "rationale": "Main contains only a minimal README while the supplemental lineage contains hundreds of commits of architecture, source, tests, and state.",
+      "claim_ceiling": "Repository-observation finding; does not select a canonical current non-main branch."
+    },
+    {
+      "id": "c2",
+      "proposition": "The audited r47 continuation branch is the current canonical Rezon state.",
+      "subject_ids": [
+        "rezon-r47"
+      ],
+      "verdict": "UNRESOLVED",
+      "evidence_ids": [
+        "o3",
+        "o4"
+      ],
+      "rationale": "The branch is materially richer than main, but the audit also observed many later work and qualification branches and did not retrieve an authoritative canonical-current pointer binding r47 as current.",
+      "claim_ceiling": "Currentness unresolved; no newest-branch or richest-branch inference."
+    },
+    {
+      "id": "c3",
+      "proposition": "Rezon main and the r47 continuation branch differ materially in documented and implemented state.",
+      "subject_ids": [
+        "rezon-main",
+        "rezon-r47"
+      ],
+      "verdict": "PASS",
+      "evidence_ids": [
+        "o1",
+        "o2",
+        "o3",
+        "o4"
+      ],
+      "rationale": "Exact compare and root/file reads show a 278-commit delta with extensive added implementation and documentation.",
+      "claim_ceiling": "Difference only; not currentness or quality."
+    }
+  ],
+  "limitations": [
+    "This case intentionally refuses to infer canonical currentness from branch recency or branch richness."
+  ]
+}
