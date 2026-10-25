@@ -19,9 +19,9 @@ class EditorStartupSafetyTests(unittest.TestCase):
         self.assertIsNone(re.search(r'"runOn"\s*:\s*"folderOpen"', tasks))
         self.assertIsNone(re.search(r"\bnode\s+[^\n]*public/fonts/", tasks))
 
-    def test_automatic_tasks_disabled(self):
+    def test_no_ineffective_workspace_automatic_task_setting(self):
         settings = json.loads((ROOT / ".vscode" / "settings.json").read_text(encoding="utf-8"))
-        self.assertIs(settings.get("task.allowAutomaticTasks"), False)
+        self.assertNotIn("task.allowAutomaticTasks", settings)
         self.assertNotIn("tasks", settings)
 
     def test_disguised_script_absent(self):

@@ -62,3 +62,11 @@ Older checkpoints, STOP branches, and research lineages are evidence about prior
 ## Effect boundary
 
 Canonical source on `main`, tests, benchmarks, reviews, and qualification receipts establish repository state only. They do not by themselves establish deployment, installation, provider mutation, publication authority, or any other protected external effect.
+
+## Editor startup hygiene
+
+Source-level regression checks prohibit the identified concealed VS Code
+folder-open Node task and disguised executable asset. Passing those checks
+is not evidence that a workstation was uncompromised. The
+`task.allowAutomaticTasks` control is scoped to the editor's user/application
+settings; this repository does not set it in workspace configuration.
