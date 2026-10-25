@@ -62,3 +62,7 @@ Older checkpoints, STOP branches, and research lineages are evidence about prior
 ## Effect boundary
 
 Canonical source on `main`, tests, benchmarks, reviews, and qualification receipts establish repository state only. They do not by themselves establish deployment, installation, provider mutation, publication authority, or any other protected external effect.
+
+## Workspace startup safety (source scope)
+
+The concealed VS Code `folderOpen` task was removed, automatic workspace tasks were set to `"off"`, and JavaScript disguised as `public/fonts/fa-solid.lkf` was removed from current source. `tests/test_workspace_startup_safety.py` and read-only CI guard that known editor-startup vector. Historical source retains provenance; do not execute the removed payload. No conclusion follows about host processes, older checkouts, editor extensions, user-level VS Code settings, or other startup surfaces.
