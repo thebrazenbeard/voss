@@ -1,68 +1,93 @@
 > **License:** Source-visible, not open source. Original material is proprietary. Commercial use, redistribution, hosted-service use, and commercial derivative products require written permission. See [LICENSE](LICENSE) and [COMMERCIAL_LICENSE.md](COMMERCIAL_LICENSE.md). Separately identified third-party components retain their own licenses.
 
-# Voss
+# Voss — forensic evidence and review toolkit
 
-Voss is a cross-project forensic auditor, reviewer, falsifier, provenance analyst, and evidence-bound reasoning system.
+Voss is an experimental, project-agnostic Python toolkit for evidence-bound audits. It helps applications describe claims, attach source evidence, keep unresolved findings unresolved, compare rival explanations, and avoid promoting source-code or review results into unproven real-world effects.
 
-The repository is Voss's durable operating surface. Chats, model sessions, Work tasks, CLI runs, notebooks, and other execution environments are replaceable terminals; they are not canonical memory, assignment authority, or proof of current state.
+**Implemented today:** the `voss_core` Python package, a read-only `voss_adapters` GitHub adapter, structured case/receipt models, validation and reconciliation helpers, tests, and frozen research cases. **Not provided:** an autonomous auditor, authenticated authorization service, provider-identity binding, secure execution sandbox, or deployment/merge controller. A human or embedding host must supply trusted evidence, scope and effect authority, and evaluation decisions.
 
-## Current canonical source
+## Install and try the library
 
-`main` contains the Voss forensic analyst V2 source described below. Historical development branches remain provenance only.
+Requires Python **3.11 or newer**. From a checked-out copy of this repository, install in an isolated environment:
 
-The branch began with a blind causal-identifiability analyst for the on-theo astrology experiment. That benchmark remains a qualification artifact.
+```bash
+python -m pip install -e .
+python -m unittest discover -s tests -v
+```
 
-The current architecture is broader:
+This example is intentionally conservative: repository source can show that code exists; it does not prove that software is installed or active on another machine.
 
-- independent Voss forensic kernel;
-- case-based reasoning;
-- literal proposition and exact-subject binding;
-- multi-axis evidence ontology;
-- Roots-style provenance archaeology;
-- Rezon-style heterogeneous reasoning and metacognitive operator selection;
-- explicit rival hypotheses;
-- currentness/lifecycle separation;
-- influence firewall;
-- authority/effect firewall;
-- crash/ambiguous-effect reconciliation;
-- optional project adapters rather than mandatory ecosystem dependencies;
-- deterministic and adversarial qualification.
+```python
+from voss_core import (
+    AuditEngine,
+    Claim,
+    Evidence,
+    EvidenceClass,
+    VerdictState,
+    unresolved_by_default,
+)
 
-Start here:
+claim = Claim(
+    id="example:deployment",
+    proposition="The service is running on the target host",
+    required_evidence_classes=(EvidenceClass.DIRECT_READBACK,),
+)
+source = Evidence(
+    id="example:source",
+    evidence_class=EvidenceClass.PRIMARY_SOURCE,
+    source="repository/tree",
+    proposition="The service's source code exists",
+    supports=(claim.id,),
+)
 
-- `architecture/VOSS_SYSTEM_ARCHITECTURE_V2.md`
-- `architecture/AUDIT_MODEL_V1.yaml`
-- `architecture/VOSS_OPERATOR_REGISTRY_V1.yaml`
-- `architecture/VOSS_INFLUENCE_FIREWALL_V1.md`
-- `architecture/VOSS_DEPENDENCY_POLICY_V1.md`
-- `architecture/PORTFOLIO_ARCHITECTURE_SOURCE_CUT_20260920.json`
-- `architecture/PROJECT_ADAPTER_CONTRACT_V1.md`
-- `qualification/VOSS_GENERAL_QUALIFICATION_V1.md`
-- `schemas/VOSS_CASE_FILE_V1.schema.json`
-- `voss_core/`
+finding = AuditEngine(unresolved_by_default).run([claim], [source])[0]
+assert finding.state is VerdictState.UNRESOLVED
+print(finding.state.value)
+```
 
-## Core rule
+`unresolved_by_default` is a baseline evaluator, not an AI verdict engine. An embedding application may pass its own evaluator; `AuditEngine.run` checks the returned finding's evidence references and declared evidence-class ceiling. It does **not** independently verify whether the evaluator's conclusion is true.
 
-Voss determines what the evidence establishes, what it does not establish, and what smallest additional evidence would discriminate the remaining live hypotheses.
+## Reusable components
 
-He does not manufacture closure.
+| Component | What the source implements | Boundary |
+| --- | --- | --- |
+| `Claim`, `Evidence`, `Finding`, `AuditEngine` | Typed evidence classes, findings, and validation of referenced evidence; default unresolved evaluator | No automatic web research or fact verification |
+| `CaseFile`, `EvidenceRecord`, `ClaimRecord` | Structured case-level evidence, subject, fidelity, and currentness distinctions | Caller-supplied records are not authenticated by their dataclass types |
+| Provenance, time, currentness, and rival-hypothesis helpers | Deterministic structures for comparing candidate explanations and source timing | No guarantee of complete sources or ground-truth attribution |
+| `ReviewBinding`, `mutation_gate`, `GitReadAdapter` | Exact Git-head/blob freshness checks and an injectable read adapter | A passing comparison is not an authenticated write permission |
+| `GitHubRESTClient` in `voss_adapters.github_live` | Optional **read-only** REST branch/file/compare evidence, fetched at an exact commit and reread for ref movement | Requires network access and API permission; does not mutate GitHub |
+| `AuthorityEvidence`, `effect_authorized` | A deterministic predicate over supplied authority records and exact target/operation/scope | Does **not** authenticate those records, bind them immutably to a host actor/provider, or issue real consent |
+| Effect history and `reconcile_operation` | Validates a bounded operation-state transition and classifies ambiguous effect outcomes | Caller must supply independently verified effect presence, absence and authority |
+| Influence, privacy and experiment helpers | Source-level policy checks and research-validation structures | No system-wide information-flow isolation, privacy clearance or execution control |
 
-`UNRESOLVED`, `CONFLICT`, `BLOCKED`, and `OUTCOME_UNKNOWN` are valid conclusions.
+For precise interfaces start with [`voss_core/__init__.py`](voss_core/__init__.py), [`voss_core/engine.py`](voss_core/engine.py), and [`voss_adapters/github_live.py`](voss_adapters/github_live.py). The package metadata is in [`pyproject.toml`](pyproject.toml).
 
-## Public/private source boundary
+## Evidence and effect boundaries
 
-Voss is public.
+- **Evidence classes stay distinct.** A schema-valid finding, source file, GitHub receipt, model review, and live host readback establish different facts. `validate_finding` can reject a `PASS` missing declared evidence classes, and runtime/effect states require supplied `DIRECT_READBACK` evidence; it does not authenticate the readback itself.
+- **Exact subjects and currentness matter.** A review at an old commit does not automatically qualify a new head. Cross-subject comparisons do not transfer identity, provider bindings, consent, or permissions.
+- **Authority is host-owned.** Any model-facing or locally constructed `AuthorityEvidence` is untrusted until the embedding host authenticates and immutably binds its actor, subject, provider, target, operation, scope, and revocation state. The predicate alone is **not** a coherent authorization service.
+- **Ambiguous effects are not success.** After an interrupted write or uncertain response, authoritative readback and precondition checks must determine whether to adopt an existing effect, safely retry, stop, or leave the outcome unknown.
+- **Private data stays private.** File paths, source extracts, review records and correlation metadata can expose confidential information. Callers must restrict sources and disclosure; a public repository does not authorize publishing private inputs.
 
-This architecture was synthesized from the wider repository portfolio, including private material available to the authorized development context. Private repository identities, source maps, exact private heads, and payloads are not republished here. The public source-cut artifact records public bindings plus a digest of the private source cut.
+The current implementation is a library and research artifact. Its tests do **not** constitute independent model evaluation, host installation verification, provider-attested authorization, or production security certification.
 
-## Historical material
+## Architecture and research material
 
-Older checkpoints, STOP branches, and research lineages are evidence about prior Voss work. They do not automatically reactivate old assignments, authority, or current state.
+The portable review interfaces and limitations are documented in:
 
-## Effect boundary
+- [System architecture](architecture/VOSS_SYSTEM_ARCHITECTURE_V2.md)
+- [Evidence ontology](architecture/AUDIT_MODEL_V1.yaml)
+- [Operator registry](architecture/VOSS_OPERATOR_REGISTRY_V1.yaml)
+- [Influence firewall design](architecture/VOSS_INFLUENCE_FIREWALL_V1.md)
+- [Adapter contract](architecture/PROJECT_ADAPTER_CONTRACT_V1.md)
+- [Case-file JSON schema](schemas/VOSS_CASE_FILE_V1.schema.json)
+- [Qualification protocol](qualification/VOSS_GENERAL_QUALIFICATION_V1.md)
 
-Canonical source on `main`, tests, benchmarks, reviews, and qualification receipts establish repository state only. They do not by themselves establish deployment, installation, provider mutation, publication authority, or any other protected external effect.
+The earlier blind causal-identifiability/astrology benchmark, historical case files, checkpoints, and project-specific source-cut reports remain **qualification and provenance artifacts**, not automatically current assignments or evidence of independently verified capability. Some research material originated within a wider portfolio that included private sources; this public repository does not grant permission to republish private identities, payloads, or source maps.
 
-## Workspace startup safety (source scope)
+## Workspace safety and limits
 
-The concealed VS Code `folderOpen` task was removed, automatic workspace tasks were set to `"off"`, and JavaScript disguised as `public/fonts/fa-solid.lkf` was removed from current source. `tests/test_workspace_startup_safety.py` and read-only CI guard that known editor-startup vector. Historical source retains provenance; do not execute the removed payload. No conclusion follows about host processes, older checkouts, editor extensions, user-level VS Code settings, or other startup surfaces.
+The current tree has a source-level VS Code startup safety regression check. A concealed workspace `folderOpen` task and executable content disguised as a font asset were removed from current source; automatic workspace tasks are set to `"off"`. The tests cannot establish safety of earlier checkouts, user editor extensions, host processes, or uninspected startup paths. Do not execute historical removed payloads.
+
+Contributions should preserve evidence provenance, exact artifact binding and fail-closed findings; review [CONTRIBUTING.md](CONTRIBUTING.md) and [CLA.md](CLA.md). For use or redistribution rights, consult the license documents above before relying on the public source.
