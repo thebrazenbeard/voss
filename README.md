@@ -91,3 +91,9 @@ The earlier blind causal-identifiability/astrology benchmark, historical case fi
 The current tree has a source-level VS Code startup safety regression check. A concealed workspace `folderOpen` task and executable content disguised as a font asset were removed from current source; automatic workspace tasks are set to `"off"`. The tests cannot establish safety of earlier checkouts, user editor extensions, host processes, or uninspected startup paths. Do not execute historical removed payloads.
 
 Contributions should preserve evidence provenance, exact artifact binding and fail-closed findings; review [CONTRIBUTING.md](CONTRIBUTING.md) and [CLA.md](CLA.md). For use or redistribution rights, consult the license documents above before relying on the public source.
+
+## Editor startup containment — tracked source (2026-11-20)
+
+The tracked `main` source formerly contained a concealed VS Code `folderOpen` task invoking obfuscated `.vscode/ini` through Node. The task list is now empty, `task.allowAutomaticTasks` is explicitly `"off"`, and the obfuscated file is removed from this source tree. Historical Git source remains for investigation.
+
+**Limits:** This is source-only containment, not proof that older checkouts, editor extensions, user/global settings, local credentials, or any previous host execution are safe. Do not execute historical suspect assets.
